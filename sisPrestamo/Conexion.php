@@ -22,6 +22,8 @@ class Conexion {
     return $resultado;
   }
   
+  //Falta insert y modificar
+  
   public function fetch_array($consulta){
    return mysql_fetch_array($consulta);
   }
