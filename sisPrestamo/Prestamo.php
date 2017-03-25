@@ -1,16 +1,18 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
-/**
- * Description of Prestamo
- *
- * @author esperanza
- */
 class Prestamo {
-    //put your code here
+    var $id_prestamo;
+    var $id_cliente;
+    var $valor_cuota;
+    var $valor_interes;
+    var $cantidad_cuotas;
+    var $fecha_inicio;
+    var $fecha_fin;
+    var $fecha_ultimo_pago;
+    var $saldo;
+    var $estado;
+    var $observaciones;
+    var $cuotas = [];
+   
 }
