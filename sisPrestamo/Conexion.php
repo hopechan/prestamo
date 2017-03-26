@@ -4,6 +4,8 @@ class Conexion {
   private $conexion; 
   private $total_consultas;
   
+  //mysql_close($this->conexion)
+  //falta insertar, borrar, modificar :v
   public function MySQL(){ 
     if(!isset($this->conexion)){
       $this->conexion = (mysql_connect("localhost","root","1234"))
