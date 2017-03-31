@@ -1,11 +1,13 @@
 <?php
-
+include_once 'Cliente.php';
+//$cliente = new Cliente();
 
 class Prestamo {
     var $id_prestamo;
-    var $id_cliente;
+    var $cliente = Cliente;
+    var $monto;
     var $valor_cuota;
-    var $valor_interes;
+    var $tasa_interes;
     var $cantidad_cuotas;
     var $fecha_inicio;
     var $fecha_fin;
@@ -19,16 +21,20 @@ class Prestamo {
         return $this->id_prestamo;
     }
 
-    function getId_cliente() {
-        return $this->id_cliente;
+    function getCliente() {
+        return $this->cliente;
+    }
+
+    function getMonto() {
+        return $this->monto;
     }
 
     function getValor_cuota() {
         return $this->valor_cuota;
     }
 
-    function getValor_interes() {
-        return $this->valor_interes;
+    function getTasa_interes() {
+        return $this->tasa_interes;
     }
 
     function getCantidad_cuotas() {
@@ -67,16 +73,20 @@ class Prestamo {
         $this->id_prestamo = $id_prestamo;
     }
 
-    function setId_cliente($id_cliente) {
-        $this->id_cliente = $id_cliente;
+    function setCliente($cliente) {
+        $this->cliente = $cliente;
+    }
+
+    function setMonto($monto) {
+        $this->monto = $monto;
     }
 
     function setValor_cuota($valor_cuota) {
         $this->valor_cuota = $valor_cuota;
     }
 
-    function setValor_interes($valor_interes) {
-        $this->valor_interes = $valor_interes;
+    function setTasa_interes($tasa_interes) {
+        $this->tasa_interes = $tasa_interes;
     }
 
     function setCantidad_cuotas($cantidad_cuotas) {
@@ -109,8 +119,5 @@ class Prestamo {
 
     function setCuotas($cuotas) {
         $this->cuotas = $cuotas;
-    }
-
-
-   
+    }   
 }
