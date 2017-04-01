@@ -12,6 +12,7 @@ class Cliente {
   public $fecha_nacimiento;
   public $observaciones;
   
+  //get
   function getDui() {
       return $this->dui;
   }
@@ -48,6 +49,7 @@ class Cliente {
       return $this->observaciones;
   }
 
+  //set
   function setDui($dui) {
       $this->dui = $dui;
   }
@@ -83,6 +85,4 @@ class Cliente {
   function setObservaciones($observaciones) {
       $this->observaciones = $observaciones;
   }
-
-
 }

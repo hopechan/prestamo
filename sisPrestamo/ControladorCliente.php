@@ -6,26 +6,26 @@ class ControladorCliente {
 
     public function agregar(Cliente $c){
        $con = new Conexion();
-       $con->prepare('INSERT INTO '.self::TABLA . '(dui, nit, nombres, apellidos, sexo, direccion, telefono, fecha_nacimiento,)'
+       $sql = $con->prepare('INSERT INTO '.self::TABLA . '(dui, nit, nombres, apellidos, sexo, direccion, telefono, fecha_nacimiento,)'
               . 'VALUES(:dui, :nit, :nombres, :apellidos, :sexo, :direccion, :telefono, :fecha_nacimiento, :observaciones);');
-       $con->bindParam(':dui',$c->getDui());
-       $con->bindParam(':nit', $c->getNit());
-       $con->bindParam(':nombres', $c->getNombres());
-       $con->bindParam(':apellidos', $c->getApellidos());
-       $con->bindParam(':sexo', $c->getSexo());
-       $con->bindParam(':direccion', $c->getDireccion());
-       $con->bindParam(':telefono', $c->getTelefono());
-       $con->bindParam(':fecha_nacimiento', $c->getFecha_nacimiento());
-       $con->bindParam(':observaciones', $c->getObservaciones());
-       $con->execute();
+       $sql->bindParam(':dui',$c->getDui());
+       $sql->bindParam(':nit', $c->getNit());
+       $sql->bindParam(':nombres', $c->getNombres());
+       $sql->bindParam(':apellidos', $c->getApellidos());
+       $sql->bindParam(':sexo', $c->getSexo());
+       $sql->bindParam(':direccion', $c->getDireccion());
+       $sql->bindParam(':telefono', $c->getTelefono());
+       $sql->bindParam(':fecha_nacimiento', $c->getFecha_nacimiento());
+       $sql->bindParam(':observaciones', $c->getObservaciones());
+       $sql->execute();
        $con = null;
     }
     
     public function obtener(){
         $con = new Conexion();
-        $con->prepare('SELECT * FROM'.self::TABLA);
-        $con->execute();
-        $Cliente = $con->fetchAll();
+        $sql = $con->prepare('SELECT * FROM'.self::TABLA);
+        $sql->execute();
+        $Cliente = $sql->fetchAll();
         if ($Cliente) {
             return $Cliente;
         }else{
@@ -42,15 +42,15 @@ class ControladorCliente {
         //</body></html>
     }
        
-    public function buscar($parametro){
-       if ($parametro == 'dui') {
+    public function buscar($s){
+       if ($s == 'dui') {
            $con = new Conexion();
-           $con->prepare('SELECT dui, nit, nombres, apellidos, sexo, direccion, telefono, fecha_nacimiento FROM'.self::TABLA
+           $sql = $con->prepare('SELECT dui, nit, nombres, apellidos, sexo, direccion, telefono, fecha_nacimiento FROM'.self::TABLA
                    .'WHERE dui = :dui;');
            $c = new Cliente();
-           $con->bindParam(':dui', $c->getDui());
-           $con->execute();
-           $Cliente = $con->fetch();
+           $sql->bindParam(':dui', $c->getDui());
+           $sql->execute();
+           $Cliente = $sql->fetch();
            if ($Cliente) {
                return new self($Cliente['dui'],
                        $Cliente['nit'],
@@ -66,14 +66,14 @@ class ControladorCliente {
        }
        
        
-       if ($parametro == 'nit') {
+       if ($s == 'nit') {
            $con = new Conexion();
-           $con->prepare('SELECT dui, nit, nombres, apellidos, sexo, direccion, telefono, fecha_nacimiento FROM'.self::TABLA
+           $sql = $con->prepare('SELECT dui, nit, nombres, apellidos, sexo, direccion, telefono, fecha_nacimiento FROM'.self::TABLA
                    .'WHERE nit = :nit;');
            $c = new Cliente();
-           $con->bindParam(':nit', $c->getNit());
-           $con->execute();
-           $Cliente = $con->fetch();
+           $sql->bindParam(':nit', $c->getNit());
+           $sql->execute();
+           $Cliente = $sql->fetch();
            if ($Cliente) {
                return new self($Cliente['dui'],
                        $Cliente['nit'],
@@ -88,14 +88,14 @@ class ControladorCliente {
            }
        }
        
-       if ($parametro == 'nombres') {
+       if ($s == 'nombres') {
            $con = new Conexion();
-           $con->prepare('SELECT dui, nit, nombres, apellidos, sexo, direccion, telefono, fecha_nacimiento FROM'.self::TABLA
+           $sql = $con->prepare('SELECT dui, nit, nombres, apellidos, sexo, direccion, telefono, fecha_nacimiento FROM'.self::TABLA
                    .'WHERE nombres = :nombres;');
            $c = new Cliente();
-           $con->bindParam(':nombres', $c->getNombres());
-           $con->execute();
-           $Cliente = $con->fetch();
+           $sql->bindParam(':nombres', $c->getNombres());
+           $sql->execute();
+           $Cliente = $sql->fetch();
            if ($Cliente) {
                return new self($Cliente['dui'],
                        $Cliente['nit'],
@@ -110,14 +110,14 @@ class ControladorCliente {
            }
        }
        
-       if ($parametro == 'apellidos') {
+       if ($s == 'apellidos') {
            $con = new Conexion();
-           $con->prepare('SELECT dui, nit, nombres, apellidos, sexo, direccion, telefono, fecha_nacimiento FROM'.self::TABLA
+           $sql = $con->prepare('SELECT dui, nit, nombres, apellidos, sexo, direccion, telefono, fecha_nacimiento FROM'.self::TABLA
                    .'WHERE apellidos = :apellidos;');
            $c = new Cliente();
-           $con->bindParam(':apellidos', $c->getApellidos());
-           $con->execute();
-           $Cliente = $con->fetch();
+           $sql->bindParam(':apellidos', $c->getApellidos());
+           $sql->execute();
+           $Cliente = $sql->fetch();
            if ($Cliente) {
                return new self($Cliente['dui'],
                        $Cliente['nit'],
@@ -135,8 +135,8 @@ class ControladorCliente {
     
     public function eliminar(Cliente $c){
         $con = new Conexion();
-        $con->prepare('DELETE FROM'.self::TABLA. 'WHERE dui=:dui;');
-        $con->bindParam(':dui', $c->getDui());
-        $con->execute();
+        $sql = $con->prepare('DELETE FROM'.self::TABLA. 'WHERE dui=:dui;');
+        $sql->bindParam(':dui', $c->getDui());
+        $sql->execute();
     }
 }
