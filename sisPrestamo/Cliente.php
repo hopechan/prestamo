@@ -85,4 +85,6 @@ class Cliente {
   function setObservaciones($observaciones) {
       $this->observaciones = $observaciones;
   }
+  
+  
 }
