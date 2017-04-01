@@ -10,6 +10,14 @@ class Cuota {
    var $saldo_anterior;
    var $saldo_actualizado;
    
+   function calcularCuota(){   
+       
+   }
+   
+   function validar(){
+       
+   }
+   
    function getNum_cuota() {
        return $this->num_cuota;
    }
@@ -66,13 +74,4 @@ class Cuota {
        $this->saldo_actualizado = $saldo_actualizado;
    }
 
-      
-   function calcularCuota(){
-       
-       
-   }
-   
-   function validar(){
-       
-   }
 }

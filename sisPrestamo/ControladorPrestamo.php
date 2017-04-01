@@ -59,7 +59,7 @@ class ControladorPrestamo {
     public function obtenerIdPrestamo(){
         $con = new Conexion();
         $sql= $con->prepare( 'SELECT MAX(id_prestamo) FROM prestamo;');
-        $con->execute();
+        $sql->execute();
         $last =$con->fetch();
         return $max[$last];
     }

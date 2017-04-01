@@ -17,6 +17,12 @@ class Prestamo {
     var $observaciones;
     var $cuotas = [];
     
+    function crearNuevaCuota(){
+        $cuota = new Cuota();  
+    }
+    
+    
+            
     function getId_prestamo() {
         return $this->id_prestamo;
     }
