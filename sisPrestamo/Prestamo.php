@@ -21,6 +21,15 @@ class Prestamo {
         $cuota = new Cuota();  
     }
     
+    function calcularCuotaMensual(){
+        $numerador=($tasa_interes($tasa_interes +1))^($cantidad_cuotas);
+        $denominador=($tasa_interes + 1)^($cantidad_cuotas) - 1;
+        $valor_cuota= $monto*($numerador/$denominador);
+        
+        $fecha_inicio = date('Y-m-d');
+        $fecha_fin = date($format, $timestamp);
+    }
+    
     
             
     function getId_prestamo() {
