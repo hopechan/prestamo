@@ -1,6 +1,4 @@
 <?php
-
-
 class Cuota {
    var $num_cuota;
    var $valor;
@@ -15,7 +13,9 @@ class Cuota {
    }
    
    function validar(){
-       
+       if (is_null($num_cuota,$valor,$interes,$capital,$fecha,$saldo_anterior,$saldo_actualizado)) {
+           echo 'Clase no definida';
+       }
    }
    
    function getNum_cuota() {

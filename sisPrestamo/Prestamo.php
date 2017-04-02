@@ -51,6 +51,12 @@ class Prestamo {
        $F = $monto(1 + $tasa_interes)^$n;
        $interes = $F - $monto;   
     }
+    
+    function validar(){
+        if (is_null($id_prestamo,$cliente,$monto,$valor_cuota,$tasa_interes,$cantidad_cuotas,$fecha_inicio,$fecha_fin,$fecha_ultimo_pago,$saldo,$estado,$observaciones,$cuotas)) {
+            echo 'Clase vacia!!';
+        }
+    }
             
     function getId_prestamo() {
         return $this->id_prestamo;
