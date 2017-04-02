@@ -19,6 +19,7 @@ class Prestamo {
     
     function crearNuevaCuota(){
         $cuota = new Cuota();  
+        return $cuota;
     }
     
     function calcularCuotaMensual(){
@@ -26,11 +27,30 @@ class Prestamo {
         $denominador=($tasa_interes + 1)^($cantidad_cuotas) - 1;
         $valor_cuota= $monto*($numerador/$denominador);
         
-        $fecha_inicio = date('Y-m-d');
-        $fecha_fin = date($format, $timestamp);
+        $fecha_inicio = date("Y-m-d H:i:s"); //devuelve en formato DATETIME igual a mysql   2001-03-10 17:16:18
+        $fecha_fin = date('Y-m-d', strtotime("$fecha_inicio + $cantidad_cuotas day"));       
     }
     
+    function agregarCuota(Cuota $cu) {
+        array_push($cuotas, $cu);
+        $saldo = $cu->saldo_actualizado;
+        $fecha_ultimo_pago = $cu->fecha;
+    }
     
+    function calcularInteresMensual() {
+        //I = F - P
+        //F = P(1 + i)^n
+       $fin = date("Y-m-d H:i:s"); //fecha actual
+       $fechaI = new DateTime($fecha_inicio);
+       $fechaF = new DateTime($fin);
+       $intervalo = $fechaI->diff($fechaF);
+       $intervalMeses=$intervalo->format("%m");
+       $intervalAnios=$intervalo->format("%y")*12;
+       //echo "hay una diferencia de ".($intervalMeses+$intervalAnios)." meses";
+       $n=$intervalMeses+$intervalAnios;
+       $F = $monto(1 + $tasa_interes)^$n;
+       $interes = $F - $monto;   
+    }
             
     function getId_prestamo() {
         return $this->id_prestamo;
