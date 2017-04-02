@@ -43,12 +43,18 @@ class ControladorCliente {
     }
        
     public function buscar($s){
-       if ($s == 'dui') {
+        $scopy = $s;
+        $length = strlen($scopy);
+        for ($i = 1; $i < $length; $i++) {
+            $s = $s . $scopy[$i];
+        }
+        
+       if ($scopy[0] == 'd') {
            $con = new Conexion();
            $sql = $con->prepare('SELECT dui, nit, nombres, apellidos, sexo, direccion, telefono, fecha_nacimiento FROM'.self::TABLA
                    .'WHERE dui = :dui;');
            $c = new Cliente();
-           $sql->bindParam(':dui', $c->getDui());
+           $sql->bindParam(':dui', $s);
            $sql->execute();
            $Cliente = $sql->fetch();
            if ($Cliente) {
@@ -66,12 +72,12 @@ class ControladorCliente {
        }
        
        
-       if ($s == 'nit') {
+       if ($scopy[0] == 'n') {
            $con = new Conexion();
            $sql = $con->prepare('SELECT dui, nit, nombres, apellidos, sexo, direccion, telefono, fecha_nacimiento FROM'.self::TABLA
                    .'WHERE nit = :nit;');
            $c = new Cliente();
-           $sql->bindParam(':nit', $c->getNit());
+           $sql->bindParam(':nit', $s);
            $sql->execute();
            $Cliente = $sql->fetch();
            if ($Cliente) {
@@ -88,12 +94,12 @@ class ControladorCliente {
            }
        }
        
-       if ($s == 'nombres') {
+       if ($scopy[0] == 'm') {
            $con = new Conexion();
            $sql = $con->prepare('SELECT dui, nit, nombres, apellidos, sexo, direccion, telefono, fecha_nacimiento FROM'.self::TABLA
                    .'WHERE nombres = :nombres;');
            $c = new Cliente();
-           $sql->bindParam(':nombres', $c->getNombres());
+           $sql->bindParam(':nombres', $s);
            $sql->execute();
            $Cliente = $sql->fetch();
            if ($Cliente) {
@@ -110,12 +116,12 @@ class ControladorCliente {
            }
        }
        
-       if ($s == 'apellidos') {
+       if ($scopy[0] == 'a') {
            $con = new Conexion();
            $sql = $con->prepare('SELECT dui, nit, nombres, apellidos, sexo, direccion, telefono, fecha_nacimiento FROM'.self::TABLA
                    .'WHERE apellidos = :apellidos;');
            $c = new Cliente();
-           $sql->bindParam(':apellidos', $c->getApellidos());
+           $sql->bindParam(':apellidos', $s);
            $sql->execute();
            $Cliente = $sql->fetch();
            if ($Cliente) {
@@ -136,7 +142,9 @@ class ControladorCliente {
     public function eliminar(Cliente $c){
         $con = new Conexion();
         $sql = $con->prepare('DELETE FROM'.self::TABLA. 'WHERE dui=:dui;');
-        $sql->bindParam(':dui', $c->getDui());
+        $sql->bindParam(':dui', $s());
         $sql->execute();
     }
+
+    
 }
