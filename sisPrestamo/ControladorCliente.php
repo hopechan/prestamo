@@ -30,8 +30,24 @@ class ControladorCliente {
             $con = new Conexion();
             $sql = $con->prepare('SELECT * FROM'.self::TABLA);
             $sql->execute();
-            $Cliente = $sql->fetchAll();
+            $ClienteSQL = $sql->fetchAll();
             if ($Cliente) {
+                $Cliente_length = count($Cliente);
+                for($i=0; $i < $Cliente_length; $i++) {
+                    $cliente = new Cliente();
+                    $cliente->setDui($Cliente[$i]['dui']);
+                    $cliente->setNit($Cliente[$i]['nit']);
+                    $cliente->setNombres($Cliente[$i]['nombres']);
+                    $cliente->setApellidos($Cliente[$i]['apellidos']);
+                    $cliente->setSexo($Cliente[$i]['sexo']);
+                    $cliente->setDireccion($Cliente[$i]['direccion']);
+                    $cliente->setTelefono($Cliente[$i]['telefono']);
+                    $cliente->setFecha_nacimiento($Cliente[$i]['fecha_nacimiento']);
+                    $cliente->setObservaciones($Cliente[$i]['observaciones']);
+                    
+                    $Cliente[];
+                    array_push($Cliente, $cliente);
+                }
                 return $Cliente;
             }else{
                 return false;
@@ -65,19 +81,27 @@ class ControladorCliente {
                 $c = new Cliente();
                 $sql->bindParam(':dui', $s);
                 $sql->execute();
-                 $Cliente = $sql->fetch();
+                $Cliente = $sql->fetch();
                 if ($Cliente) {
-                    return new self($Cliente['dui'],
-                        $Cliente['nit'],
-                        $Cliente['nombres'],
-                        $Cliente['apellidos'],
-                        $Cliente['sexo'],
-                        $Cliente['direccion'],
-                        $Cliente['telefono'],
-                        $Cliente['fecha_nacimiento']);
-                }else{
-                    return false;
-                }   
+                $Cliente_length = count($Cliente);
+                for($i=0; $i < $Cliente_length; $i++) {
+                    $cliente = new Cliente();
+                    $cliente->setDui($Cliente[$i]['dui']);
+                    $cliente->setNit($Cliente[$i]['nit']);
+                    $cliente->setNombres($Cliente[$i]['nombres']);
+                    $cliente->setApellidos($Cliente[$i]['apellidos']);
+                    $cliente->setSexo($Cliente[$i]['sexo']);
+                    $cliente->setDireccion($Cliente[$i]['direccion']);
+                    $cliente->setTelefono($Cliente[$i]['telefono']);
+                    $cliente->setFecha_nacimiento($Cliente[$i]['fecha_nacimiento']);
+                    $cliente->setObservaciones($Cliente[$i]['observaciones']);
+                    $Cliente[];
+                    array_push($Cliente, $cliente);
+                }
+                return $Cliente;
+            }else{
+                return false;
+            }      
             }
        
        
@@ -90,17 +114,26 @@ class ControladorCliente {
                 $sql->execute();
                 $Cliente = $sql->fetch();
                 if ($Cliente) {
-                    return new self($Cliente['dui'],
-                        $Cliente['nit'],
-                        $Cliente['nombres'],
-                        $Cliente['apellidos'],
-                        $Cliente['sexo'],
-                        $Cliente['direccion'],
-                        $Cliente['telefono'],
-                        $Cliente['fecha_nacimiento']);
-                }else{
-                    return false;
+                $Cliente_length = count($Cliente);
+                for($i=0; $i < $Cliente_length; $i++) {
+                    $cliente = new Cliente();
+                    $cliente->setDui($Cliente[$i]['dui']);
+                    $cliente->setNit($Cliente[$i]['nit']);
+                    $cliente->setNombres($Cliente[$i]['nombres']);
+                    $cliente->setApellidos($Cliente[$i]['apellidos']);
+                    $cliente->setSexo($Cliente[$i]['sexo']);
+                    $cliente->setDireccion($Cliente[$i]['direccion']);
+                    $cliente->setTelefono($Cliente[$i]['telefono']);
+                    $cliente->setFecha_nacimiento($Cliente[$i]['fecha_nacimiento']);
+                    $cliente->setObservaciones($Cliente[$i]['observaciones']);
+                    
+                    $Cliente[];
+                    array_push($Cliente, $cliente);
                 }
+                return $Cliente;
+            }else{
+                return false;
+            }      
             }
        
             if ($scopy[0] == 'm') {
@@ -112,17 +145,25 @@ class ControladorCliente {
                 $sql->execute();
                 $Cliente = $sql->fetch();
                 if ($Cliente) {
-                    return new self($Cliente['dui'],
-                        $Cliente['nit'],
-                        $Cliente['nombres'],
-                        $Cliente['apellidos'],
-                        $Cliente['sexo'],
-                        $Cliente['direccion'],
-                        $Cliente['telefono'],
-                        $Cliente['fecha_nacimiento']);
-                }else{
-                    return false;
+                $Cliente_length = count($Cliente);
+                for($i=0; $i < $Cliente_length; $i++) {
+                    $cliente = new Cliente();
+                    $cliente->setDui($Cliente[$i]['dui']);
+                    $cliente->setNit($Cliente[$i]['nit']);
+                    $cliente->setNombres($Cliente[$i]['nombres']);
+                    $cliente->setApellidos($Cliente[$i]['apellidos']);
+                    $cliente->setSexo($Cliente[$i]['sexo']);
+                    $cliente->setDireccion($Cliente[$i]['direccion']);
+                    $cliente->setTelefono($Cliente[$i]['telefono']);
+                    $cliente->setFecha_nacimiento($Cliente[$i]['fecha_nacimiento']);
+                    $cliente->setObservaciones($Cliente[$i]['observaciones']);
+                    $Cliente[];
+                    array_push($Cliente, $cliente);
                 }
+                return $Cliente;
+            }else{
+                return false;
+            }      
             }
        
             if ($scopy[0] == 'a') {
@@ -134,17 +175,25 @@ class ControladorCliente {
                 $sql->execute();
                 $Cliente = $sql->fetch();
                 if ($Cliente) {
-                    return new self($Cliente['dui'],
-                        $Cliente['nit'],
-                        $Cliente['nombres'],
-                        $Cliente['apellidos'],
-                        $Cliente['sexo'],
-                        $Cliente['direccion'],
-                        $Cliente['telefono'],
-                        $Cliente['fecha_nacimiento']);
-                }else{
-                    return false;
+                $Cliente_length = count($Cliente);
+                for($i=0; $i < $Cliente_length; $i++) {
+                    $cliente = new Cliente();
+                    $cliente->setDui($Cliente[$i]['dui']);
+                    $cliente->setNit($Cliente[$i]['nit']);
+                    $cliente->setNombres($Cliente[$i]['nombres']);
+                    $cliente->setApellidos($Cliente[$i]['apellidos']);
+                    $cliente->setSexo($Cliente[$i]['sexo']);
+                    $cliente->setDireccion($Cliente[$i]['direccion']);
+                    $cliente->setTelefono($Cliente[$i]['telefono']);
+                    $cliente->setFecha_nacimiento($Cliente[$i]['fecha_nacimiento']);
+                    $cliente->setObservaciones($Cliente[$i]['observaciones']);
+                    $Cliente[];
+                    array_push($Cliente, $cliente);
                 }
+                return $Cliente;
+            }else{
+                return false;
+            }      
             }
             
         } catch (ErrorPrestamo $e) {

@@ -1,5 +1,6 @@
 <?php
 include_once 'Cliente.php';
+include_once 'Cuota.php';
 //$cliente = new Cliente();
 
 class Prestamo {
@@ -15,7 +16,8 @@ class Prestamo {
     var $saldo;
     var $estado;
     var $observaciones;
-    var $cuotas = [];
+    var $cuota = Array(Cuota);
+    
     
     function crearNuevaCuota(){
         $cuota = new Cuota();  
