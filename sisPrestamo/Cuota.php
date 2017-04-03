@@ -9,12 +9,27 @@ class Cuota {
    var $saldo_actualizado;
    
    function calcularCuota(){   
-       
+        if (isset($valor) && isset($saldo_anterior)) {
+         # code...
+          $saldo_actualizado = $saldo_anterior-$valor;
+          return $saldo_actualizado;
+       }else{
+        echo 'Algunos valores no estan ingresados';
+        return null;
+       }
    }
    
    function validar(){
-       if (is_null($num_cuota,$valor,$interes,$capital,$fecha,$saldo_anterior,$saldo_actualizado)) {
+      if (is_null($num_cuota,$valor,$interes,$capital,$fecha,$saldo_anterior,$saldo_actualizado)) {
            echo 'Clase no definida';
+       }
+       if($saldo_anterior<=0){
+        echo 'Fin del Prestamo';
+       }else if ($saldo_anterior<$valor) {
+          echo 'Verificar el Valor de la Couta';
+
+       } else {
+         echo 'algo salio mal, verifica!';
        }
    }
    
