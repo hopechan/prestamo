@@ -1,13 +1,16 @@
 <?php
 class ErrorPrestamo extends Exception {
-    public function nuevo() {
-        // Mensaje de error
-        $errorMsg = 'Error en la línea '
-        .$this->getLine().' en el archivo '
-        .$this->getFile() .': <b>'
-        .$this->getMessage().
-        '</b>Guarde este error';
-        return $errorMsg;
-    }
+    private $titulo;
+    private $ubicacion;
+    private $mensaje;
+    
+    function __construct($titulo, $ubicacion, $mensaje) {
+        $this->getFile() = $titulo;
+        $this->getLine() = $ubicacion;
+        $this->getMessage() = $mensaje;
+        parent::__construct($titulo, $ubicacion, $mensaje);
+        }
+        
+ 
     
 }

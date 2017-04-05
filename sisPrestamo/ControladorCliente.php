@@ -133,7 +133,7 @@ class ControladorCliente {
                 return $Cliente;
             }else{
                 return false;
-            }      
+                }      
             }
        
             if ($scopy[0] == 'm') {
