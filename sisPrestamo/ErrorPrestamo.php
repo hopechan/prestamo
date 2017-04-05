@@ -4,7 +4,7 @@ class ErrorPrestamo extends Exception {
     private $ubicacion;
     private $mensaje;
     
-    function __construct($titulo, $ubicacion, $mensaje) {
+    function nuevo($titulo, $ubicacion, $mensaje) {
         $this->getFile() = $titulo;
         $this->getLine() = $ubicacion;
         $this->getMessage() = $mensaje;
