@@ -20,38 +20,63 @@ class Prestamo {
     
     
     function crearNuevaCuota(){
-        $cuota = new Cuota();  
-        return $cuota;
+        try {
+            $cuota = new Cuota();  
+            throw new ErrorPrestamo();
+            return $cuota;
+        } catch (ErrorPrestamo $e) {
+            echo $e->nuevo($titulo, $ubicacion, $mensaje);
+        }
     }
     
     function calcularCuotaMensual(){
-        $numerador=($tasa_interes($tasa_interes +1))^($cantidad_cuotas);
-        $denominador=($tasa_interes + 1)^($cantidad_cuotas) - 1;
-        $valor_cuota= $monto*($numerador/$denominador);
-        
-        $fecha_inicio = date("Y-m-d H:i:s"); //devuelve en formato DATETIME igual a mysql   2001-03-10 17:16:18
-        $fecha_fin = date('Y-m-d', strtotime("$fecha_inicio + $cantidad_cuotas day"));       
+        try {
+            $numerador=($tasa_interes($tasa_interes +1))^($cantidad_cuotas);
+            $denominador=($tasa_interes + 1)^($cantidad_cuotas) - 1;
+            $valor_cuota= $monto*($numerador/$denominador); 
+            $fecha_inicio = date("Y-m-d H:i:s"); //devuelve en formato DATETIME igual a mysql   2001-03-10 17:16:18
+            $fecha_fin = date('Y-m-d', strtotime("$fecha_inicio + $cantidad_cuotas day"));   
+            throw new ErrorPrestamo();
+        } catch (ErrorPrestamo $e) {
+            echo $e->nuevo($titulo, $ubicacion, $mensaje);
+        }
+
+            
     }
     
     function agregarCuota(Cuota $cu) {
-        array_push($cuotas, $cu);
-        $saldo = $cu->saldo_actualizado;
-        $fecha_ultimo_pago = $cu->fecha;
+        try {
+            array_push($cuotas, $cu);
+            $saldo = $cu->saldo_actualizado;
+            $fecha_ultimo_pago = $cu->fecha;
+            throw new ErrorPrestamo();
+        } catch (ErrorPrestamo $e) {
+            echo $e->nuevo($titulo, $ubicacion, $mensaje);
+        }
+
+        
     }
     
     function calcularInteresMensual() {
         //I = F - P
         //F = P(1 + i)^n
-       $fin = date("Y-m-d H:i:s"); //fecha actual
-       $fechaI = new DateTime($fecha_inicio);
-       $fechaF = new DateTime($fin);
-       $intervalo = $fechaI->diff($fechaF);
-       $intervalMeses=$intervalo->format("%m");
-       $intervalAnios=$intervalo->format("%y")*12;
+        try {
+            
+            $fin = date("Y-m-d H:i:s"); //fecha actual
+            $fechaI = new DateTime($fecha_inicio);
+            $fechaF = new DateTime($fin);
+            $intervalo = $fechaI->diff($fechaF);
+            $intervalMeses=$intervalo->format("%m");
+            $intervalAnios=$intervalo->format("%y")*12;
        //echo "hay una diferencia de ".($intervalMeses+$intervalAnios)." meses";
-       $n=$intervalMeses+$intervalAnios;
-       $F = $monto(1 + $tasa_interes)^$n;
-       $interes = $F - $monto;   
+            $n=$intervalMeses+$intervalAnios;
+            $F = $monto(1 + $tasa_interes)^$n;
+            $interes = $F - $monto;   
+            throw new ErrorPrestamo();
+        } catch (ErrorPrestamo $e) {
+            echo $e->nuevo($titulo, $ubicacion, $mensaje);
+        }
+
     }
     
     function validar(){

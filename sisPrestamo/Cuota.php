@@ -9,28 +9,40 @@ class Cuota {
    var $saldo_actualizado;
    
    function calcularCuota(){   
-        if (isset($valor) && isset($saldo_anterior)) {
-         # code...
-          $saldo_actualizado = $saldo_anterior-$valor;
-          return $saldo_actualizado;
-       }else{
-        echo 'Algunos valores no estan ingresados';
-        return null;
+       try {
+            if (isset($valor) && isset($saldo_anterior)) {
+                $saldo_actualizado = $saldo_anterior-$valor;
+                return $saldo_actualizado;
+            }else{
+            echo 'Algunos valores no estan ingresados';
+            return null;
+            }
+            throw new ErrorPrestamo();
+        } catch (ErrorPrestamo $e) {
+           echo $e->nuevo($titulo, $ubicacion, $mensaje);
        }
    }
    
    function validar(){
-      if (is_null($num_cuota,$valor,$interes,$capital,$fecha,$saldo_anterior,$saldo_actualizado)) {
+       try {
+           if (is_null($num_cuota,$valor,$interes,$capital,$fecha,$saldo_anterior,$saldo_actualizado)) {
            echo 'Clase no definida';
+            }
+            if($saldo_anterior<=0){
+            echo 'Fin del Prestamo';
+            }else if ($saldo_anterior<$valor) {
+            echo 'Verificar el Valor de la Couta';
+            } else {
+            echo 'algo salio mal, verifica!';
+            }
+            throw new ErrorPrestamo();
+        } catch (ErrorPrestamo $e) {
+           echo $e->nuevo($titulo, $ubicacion, $mensaje);
        }
-       if($saldo_anterior<=0){
-        echo 'Fin del Prestamo';
-       }else if ($saldo_anterior<$valor) {
-          echo 'Verificar el Valor de la Couta';
 
-       } else {
-         echo 'algo salio mal, verifica!';
-       }
+
+
+       
    }
    
    function getNum_cuota() {
