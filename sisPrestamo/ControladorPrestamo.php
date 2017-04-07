@@ -4,6 +4,7 @@ class ControladorPrestamo {
     const TABLA = 'prestamo';
     var $max = [];
     var $Prestamo = [];
+   
     public function agregar(Prestamo $p){
         try {
             $con = new Conexion();
@@ -24,7 +25,7 @@ class ControladorPrestamo {
             $sql->bindParam(':cuotas',$p->getCuotas());
             $sql->execute();
             $con = null;
-            
+            throw new ErrorPrestamo($titulo,$ubicacion,$mensaje);
         } catch (ErrorPrestamo $e) {
             echo $e->nuevo();
         }
@@ -40,7 +41,8 @@ class ControladorPrestamo {
                 return $Prestamo;
             }else{
                 return false;
-            }      
+            }  
+            throw new ErrorPrestamo($titulo,$ubicacion,$mensaje);
         } catch (ErrorPrestamo $e) {
             echo $e->nuevo();
         }  
@@ -64,6 +66,7 @@ class ControladorPrestamo {
             $sql->bindParam(':id_prestamo', $p->getId_prestamo());
             $sql->execute();
             $con = null;
+            throw new ErrorPrestamo($titulo,$ubicacion,$mensaje);
         } catch (ErrorPrestamo $e) {
             echo $e->nuevo();
         }    
@@ -75,6 +78,7 @@ class ControladorPrestamo {
             $sql= $con->prepare( 'SELECT MAX(id_prestamo) FROM prestamo;');
             $sql->execute();
             $last =$con->fetch();
+            throw new ErrorPrestamo($titulo,$ubicacion,$mensaje);
             return $max[$last];
         } catch (ErrorPrestamo $e) {
             echo $e->nuevo();
@@ -87,6 +91,7 @@ class ControladorPrestamo {
             $sql=$con->prepare();//Aqui va la sentencia 
             $sql->execute();
             $Prestamo = $sql->fecthAll();
+            throw new ErrorPrestamo($titulo,$ubicacion,$mensaje);
             return $Prestamo;
             
         } catch (ErrorPrestamo $e) {

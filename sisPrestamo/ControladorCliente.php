@@ -5,7 +5,7 @@ class ControladorCliente {
     const TABLA = 'cliente';
 
     public function agregar(Cliente $c){
-       try {
+       try {   
        $con = new Conexion();
        $sql = $con->prepare('INSERT INTO '.self::TABLA . '(dui, nit, nombres, apellidos, sexo, direccion, telefono, fecha_nacimiento,)'
               . 'VALUES(:dui, :nit, :nombres, :apellidos, :sexo, :direccion, :telefono, :fecha_nacimiento, :observaciones);');
@@ -20,6 +20,7 @@ class ControladorCliente {
        $sql->bindParam(':observaciones', $c->getObservaciones());
        $sql->execute();
        $con = null;
+       throw new ErrorPrestamo($titulo, $ubicacion, $mensaje);
         } catch (ErrorPrestamo $e) {
             echo $e->nuevo();
         }        
@@ -43,15 +44,15 @@ class ControladorCliente {
                     $cliente->setDireccion($Cliente[$i]['direccion']);
                     $cliente->setTelefono($Cliente[$i]['telefono']);
                     $cliente->setFecha_nacimiento($Cliente[$i]['fecha_nacimiento']);
-                    $cliente->setObservaciones($Cliente[$i]['observaciones']);
-                    
+                    $cliente->setObservaciones($Cliente[$i]['observaciones']);   
                     $Cliente[];
                     array_push($Cliente, $cliente);
                 }
                 return $Cliente;
             }else{
                 return false;
-            }      
+            }
+            throw new ErrorPrestamo($titulo, $ubicacion, $mensaje);
         } catch (ErrorPrestamo $e) {
             echo $e->nuevo();
         }
@@ -73,7 +74,6 @@ class ControladorCliente {
             for ($i = 1; $i < $length; $i++) {
                 $s = $s . $scopy[$i];
             }
-        
             if ($scopy[0] == 'd') {
                 $con = new Conexion();
                 $sql = $con->prepare('SELECT dui, nit, nombres, apellidos, sexo, direccion, telefono, fecha_nacimiento FROM'.self::TABLA
@@ -101,9 +101,8 @@ class ControladorCliente {
                 return $Cliente;
             }else{
                 return false;
-            }      
+                }      
             }
-       
        
             if ($scopy[0] == 'n') {
                 $con = new Conexion();
@@ -163,7 +162,7 @@ class ControladorCliente {
                 return $Cliente;
             }else{
                 return false;
-            }      
+                }      
             }
        
             if ($scopy[0] == 'a') {
@@ -193,8 +192,9 @@ class ControladorCliente {
                 return $Cliente;
             }else{
                 return false;
-            }      
+                }      
             }
+            throw new ErrorPrestamo($titulo,$ubicacion,$mensaje);
             
         } catch (ErrorPrestamo $e) {
             echo $e->nuevo();
@@ -206,7 +206,8 @@ class ControladorCliente {
             $con = new Conexion();
             $sql = $con->prepare('DELETE FROM'.self::TABLA. 'WHERE dui=:dui;');
             $sql->bindParam(':dui', $s());
-            $sql->execute();         
+            $sql->execute();   
+            throw new ErrorPrestamo($titulo,$ubicacion,$mensaje);
         } catch (ErrorPrestamo $e) {
             echo $e->nuevo();
         }
