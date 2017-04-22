@@ -1,6 +1,16 @@
-.navbar-default{
-    color: blue;
-    background-color: blueviolet;
+.navbar-default{ 
+    background-color: #92AAC7;
+}
+
+#sidebar{
+    width:15%;
+    background-color: #92AAC7;
+    position: absolute;   
+    top: 53px;
+}
+
+#body{
+    background-color: #A1BE95;
 }
 
 .table {
@@ -8,14 +18,16 @@
      height: 100px;
      position: absolute;
      top: 300px;
-     left:205px;
+     left:210px;
 }
 
 .panel{
     width: 1000px;
     height:220px;
     position: absolute;
+    top:53px;
     left:205px;
+    background-color:#E2DFA2;
 }
 
 #busqueda{
