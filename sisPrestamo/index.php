@@ -25,33 +25,51 @@
             <a href="#" class="w3-bar-item w3-button">Pago</a>
             <a href="#" class="w3-bar-item w3-button">Prestamo</a>
         </div>
-        <div>
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <td>DUI</td>
-                        <td>NIT</td>
-                        <td>NOMBRE</td>
-                        <td>APELLIDOS</td>
-                        <td>SEXO</td>
-                        <td>FECHA <br>DE NACIMIENTO</td>
-                        <td>DIRECCION</td>
-                        <td>TELEFONO</td>
-                        <td>BOTONES</td>
-                    </tr>
-                </thead>
+        <div class="container">
+            <div class="panel panel-default">
+                <div class="panel-body">Buscar Por Nombre: <input type="text" class="form-control" id="busqueda"></div>
+                <div><button type="button" class="btn btn-primary">Nuevo Cliente</button></div>
+            </div>
+        </div>         
+        <table class="table">
+            <thead>
                 <tr>
-                    <td>1111111111</td>
-                    <td>1111111111</td>
-                    <td>1111111111</td>
-                    <td>1111111111</td>
-                    <td>1111111111</td>
-                    <td>1111111111</td>
-                    <td>1111111111</td>
-                    <td>1111111111</td>
-                    <td>1111111111</td>
+                    <th>DUI</th>
+                    <th>NIT</th>
+                    <th>Nombres</th>
+                    <th>Apellidos</th>
+                    <th>Sexo</th>
+                    <th>Fecha de<br>nacimiento</th>
+                    <th>Direccion</th>
+                    <th>Telefonos</th>
+                    <th></th>
                 </tr>
-            </table>
-        </div>
+            </thead>
+        <tbody>
+      <tr>
+        <td>1111111</td>
+        <td>111111111</td>
+        <td>Esperanza Elizabeth</td>
+        <td>Dueñas Acosta</td>
+        <td>F</td>
+        <td>08/10/1994</td>
+        <td>Col.San Jose calle el foco</td>
+        <td>79798761</td>
+        <td><button>X</button><button>0</button></td>
+      </tr>
+      <tr>
+        <td>1111111</td>
+        <td>111111111</td>
+        <td>Esperanza Elizabeth</td>
+        <td>Dueñas Acosta</td>
+        <td>F</td>
+        <td>08/10/1994</td>
+        <td>Col.San Jose calle el foco</td>
+        <td>79798761</td>
+        <td><button>X</button><button>0</button></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
     </body>
 </html>
