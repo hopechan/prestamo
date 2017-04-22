@@ -27,7 +27,7 @@
                 <img src="assets/business-person-silhouette-wearing-tie.png" id="persona">
                 <p id="tituloCliente">Clientes</p>
                 <div class="panel-body"><input type="text" class="form-control" id="busqueda" placeholder="Buscar por nombre"></div>
-                <div><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modelo">Nuevo Cliente</button></div>
+                <div><button type="button" class="btn btn-default" data-toggle="modal" data-target="#modelo"><span class="glyphicon glyphicon-edit"></span> Nuevo Cliente</button></div>
             </div>
         </div>
         <div class="modal fade" id="modelo" role="document">

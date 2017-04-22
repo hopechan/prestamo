@@ -2,9 +2,14 @@
     background-color: #92AAC7;
 }
 
+.navbar-brand{
+    color: #000000;
+}
+
 #sidebar{
     width:15%;
     background-color: #92AAC7;
+    color: #000000;
     position: absolute;   
     top: 53px;
 }
@@ -14,7 +19,7 @@
 }
 
 .table {
-     width: 1000px;
+     width: 1155px;
      height: 100px;
      position: absolute;
      top: 300px;
@@ -22,7 +27,7 @@
 }
 
 .panel{
-    width: 1000px;
+    width: 1158px;
     height:220px;
     position: absolute;
     top:53px;
@@ -36,10 +41,13 @@
     top: 150px;
 }
 
-.btn{
+.btn-default{
     position: absolute;
-    left:850px;
+    left:1000px;
     top: 150px;
+    color: #000000; 
+    background-color: #ED5752; 
+    border-color: #130269; 
 }
 
 #persona{
