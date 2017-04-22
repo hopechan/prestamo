@@ -19,11 +19,17 @@
 }
 
 .table {
-     width: 1155px;
+     width: 1150px;
      height: 100px;
      position: absolute;
      top: 300px;
-     left:210px;
+     left:205px;
+     background-color: #E2DFA2;
+     text-align: center;
+}
+
+#titulo{
+   text-align: center; 
 }
 
 .panel{
@@ -41,10 +47,16 @@
     top: 150px;
 }
 
-.btn-default{
+.btn-default{ 
     position: absolute;
-    left:1000px;
+    left: 1000px;
     top: 150px;
+    color: #000000; 
+    background-color: #ED5752; 
+    border-color: #130269; 
+}
+
+.btn-primary{
     color: #000000; 
     background-color: #ED5752; 
     border-color: #130269; 
@@ -62,11 +74,10 @@
     left: 100px;
 }
 
+#modelo{
+    background-color: #E2DFA2;
+}
 
-
-
-
-
-
-
-
+.modal-content{
+    background-color: #A1BE95;
+}

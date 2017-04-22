@@ -18,14 +18,15 @@
             </div>
         </nav>
         <div class="w3-sidebar w3-bar-block" id="sidebar">
-            <a href="#" class="w3-bar-item w3-button">Clientes</a>
-            <a href="#" class="w3-bar-item w3-button">Pago</a>
-            <a href="#" class="w3-bar-item w3-button">Prestamo</a>
+            <a href="index.php" class="w3-bar-item w3-button"><span class="glyphicon glyphicon-home"></span> Principal</a>
+            <a href="webcliente.php" class="w3-bar-item w3-button"><span class="glyphicon glyphicon-user"></span> Clientes</a>
+            <a href="webpago.php" class="w3-bar-item w3-button"><span class="glyphicon glyphicon-usd"></span> Pago</a>
+            <a href="webprestamo.php" class="w3-bar-item w3-button"><span class="glyphicon glyphicon-list-alt"></span> Prestamo</a>
         </div>
         <div class="container">
             <div class="panel panel-default">
                 <img src="assets/business-person-silhouette-wearing-tie.png" id="persona">
-                <p id="tituloCliente">Clientes</p>
+                <h4 id="tituloCliente">Clientes</h4>
                 <div class="panel-body"><input type="text" class="form-control" id="busqueda" placeholder="Buscar por nombre"></div>
                 <div><button type="button" class="btn btn-default" data-toggle="modal" data-target="#modelo"><span class="glyphicon glyphicon-edit"></span> Nuevo Cliente</button></div>
             </div>
@@ -64,6 +65,8 @@
                         </div>
                         <div class="form-group">
                             <input type="text" class="form-control" id="fecha" placeholder="Ingrese fecha">
+                            <label>Abrir Calendario</label>
+                            <button type="button" class="btn btn-primary" id="calendario"><span class="glyphicon glyphicon-calendar"></span></button>
                         </div>
                         <div class="form-group">   
                             <textarea class="form-control" rows="5" id="observaciones" placeholder="Observaciones"></textarea>
@@ -73,14 +76,15 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" id="guardar"><span class="glyphicon glyphicon-save"></span>Guardar</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal" id="cerrar"><span class="glyphicon glyphicon-remove"></span>Close</button> 
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" id="cerrar"><span class="glyphicon glyphicon-remove"></span>Close</button> 
                 </div>    
                 </div>
             </div>
         </div>
-        <table class="table">
+        <table class="table table-bordered table-condensed">
             <thead>
-                <tr>
+                <tr><td>Clientes</td></tr>
+                <tr id="titulo">
                     <th>DUI</th>
                     <th>NIT</th>
                     <th>Nombres</th>
@@ -102,7 +106,7 @@
         <td>08/10/1994</td>
         <td>Col.San Jose calle el foco</td>
         <td>79798761</td>
-        <td><button>X</button><button>0</button></td>
+        <td><button type="button" class="btn btn-primary" id="info"><span class="glyphicon glyphicon-info-sign"></span></button> <button type="button" class="btn btn-primary" id="borrar"><span class="glyphicon glyphicon-remove-sign"></span></button></td>
       </tr>
       <tr>
         <td>1111111</td>
@@ -113,7 +117,7 @@
         <td>08/10/1994</td>
         <td>Col.San Jose calle el foco</td>
         <td>79798761</td>
-        <td><button>X</button><button>0</button></td>
+        <td><button type="button" class="btn btn-primary" id="info"><span class="glyphicon glyphicon-info-sign"></span></button> <button type="button" class="btn btn-primary" id="borrar"><span class="glyphicon glyphicon-remove-sign"></span></button></td>
       </tr>
     </tbody>
   </table>
