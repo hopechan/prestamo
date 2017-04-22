@@ -16,7 +16,7 @@
                     <a class="navbar-brand" href="#">Sistema Prestamo</a>
                 </div>
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Home</a></li>
+                    <li class="active"><a href="#">Clientes</a></li>
                 </ul>
             </div>
         </nav>
@@ -27,10 +27,60 @@
         </div>
         <div class="container">
             <div class="panel panel-default">
-                <div class="panel-body">Buscar Por Nombre: <input type="text" class="form-control" id="busqueda"></div>
-                <div><button type="button" class="btn btn-primary">Nuevo Cliente</button></div>
+                <img src="assets/business-person-silhouette-wearing-tie.png" id="persona">
+                <p id="tituloCliente">Clientes</p>
+                <div class="panel-body"><input type="text" class="form-control" id="busqueda" placeholder="Buscar por nombre"></div>
+                <div><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modelo">Nuevo Cliente</button></div>
             </div>
-        </div>         
+        </div>
+        <div class="modal fade" id="modelo" role="document">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Nuevo Cliente</h4>
+                    </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">                           
+                            <input type="text" class="form-control" id="DUI" placeholder="Ingrese DUI">
+                        </div>
+                        <div class="form-group">                            
+                            <input type="text" class="form-control" id="NIT" placeholder="Ingrese NIT">
+                        </div>
+                        <div class="form-group">                         
+                            <input type="text" class="form-control" id="nombre" placeholder="Ingrese nombres">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="apellidos" placeholder="Ingrese apellidos">
+                        </div>
+                        <div class="form-group">
+                            <label class="radio-inline"><input type="radio" name="optradio">Masculino</label>   
+                            <label class="radio-inline"><input type="radio" name="optradio">Femenino</label>
+                        </div>
+                        <div class="form-group">                           
+                            <textarea class="form-control" rows="5" id="direccion" placeholder="Direccion"></textarea>
+                        </div>
+                        <div class="form-group">                       
+                            <input type="text" class="form-control" id="telefono" placeholder="Ingrese numero de telefono">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="fecha" placeholder="Ingrese fecha">
+                        </div>
+                        <div class="form-group">   
+                            <textarea class="form-control" rows="5" id="observaciones" placeholder="Observaciones"></textarea>
+                        </div> 
+                        
+                    </form>              
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="guardar"><span class="glyphicon glyphicon-save"></span>Guardar</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal" id="cerrar"><span class="glyphicon glyphicon-remove"></span>Close</button> 
+                </div>    
+                </div>
+            </div>
+        </div>
         <table class="table">
             <thead>
                 <tr>
