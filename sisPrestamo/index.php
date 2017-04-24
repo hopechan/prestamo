@@ -70,20 +70,19 @@
                         </div>
                         <div class="form-group">   
                             <textarea class="form-control" rows="5" id="observaciones" placeholder="Observaciones"></textarea>
-                        </div> 
-                        
+                        </div>                        
                     </form>              
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" id="guardar"><span class="glyphicon glyphicon-save"></span>Guardar</button>
-                    <button type="button" class="btn btn-primary" data-dismiss="modal" id="cerrar"><span class="glyphicon glyphicon-remove"></span>Close</button> 
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" id="cerrar"><span class="glyphicon glyphicon-remove"></span>Cerrar</button> 
                 </div>    
                 </div>
             </div>
         </div>
         <table class="table table-bordered table-condensed">
             <thead>
-                <tr><td>Clientes</td></tr>
+                <tr>Clientes</tr>
                 <tr id="titulo">
                     <th>DUI</th>
                     <th>NIT</th>

@@ -26,8 +26,7 @@
         </div> 
         <div class="container">
             <div class="panel panel-default">
-                <img src="assets/business-person-silhouette-wearing-tie.png" id="persona">
-                <h4 id="tituloCliente">Clientes</h4>
+                <h4 id="tituloCliente">Prestamos</h4>
                 <div class="panel-body"><input type="text" class="form-control" id="busqueda" placeholder="Buscar por nombre"></div>
                 <div><button type="button" class="btn btn-default" data-toggle="modal" data-target="#modelo"><span class="glyphicon glyphicon-edit"></span> Nuevo Prestamo</button></div>
             </div>

@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Pago</title>
+        <title>Detalle Prestamo</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <link rel="stylesheet" href="assets/style.css">
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -23,5 +23,12 @@
             <a href="webpago.php" class="w3-bar-item w3-button"><span class="glyphicon glyphicon-usd"></span> Pago</a>
             <a href="webprestamo.php" class="w3-bar-item w3-button"><span class="glyphicon glyphicon-list-alt"></span> Prestamo</a>
         </div> 
+        <div class="container">
+            <div class="panel panel-default">
+                <h4 id="tituloCliente">Prestamos</h4>
+                <div class="panel panel-default" id="detalle">                   
+                </div>
+            </div>
+        </div>
     </body> 
 </html>
