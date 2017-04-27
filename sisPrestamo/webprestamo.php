@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="funciones.js"></script>
     </head>
     <body id=body>
         <nav class="navbar navbar-default">
@@ -44,10 +45,13 @@
                         <div class="form-group">
                         <label for="listaClientes">Clientes</label>
                         <select class="form-control" id="listaClientes">
-                            <option>Cliente</option>
-                            <option>Cliente</option>
-                            <option>Cliente</option>
-                            <option>Cliente</option>
+                            <?php
+                            include 'ControladorCliente.php';
+                            $Cliente = new ControladorCliente();
+                            $Rset = $Cliente->obtener();
+                            foreach ($rows as $row) {
+                            echo '<option value="'.$row['nombres'].'">'.$row['apellidos'].'</option>';
+                            }?>
                         </select>
                         </div>
                         <div class="form-group">

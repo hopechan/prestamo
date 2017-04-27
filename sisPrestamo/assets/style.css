@@ -1,10 +1,12 @@
 .navbar-default{ 
     background-color: #13607C;
+    border-color: #13607C;
 }
 
 .navbar-default .navbar-brand {
     color: #FFFFFF;
 }
+
 
 #sidebar{
     width:15%;

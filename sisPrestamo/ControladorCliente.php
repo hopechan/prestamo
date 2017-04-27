@@ -29,7 +29,7 @@ class ControladorCliente {
     public function obtener(){
         try {          
             $con = new Conexion();
-            $sql = $con->prepare('SELECT * FROM'.self::TABLA);
+            $sql = $con->prepare('SELECT dui, nit, nombres, apellidos,sexo,direccion,telefonos,fecha_nacimiento,observaciones from cliente;'.self::TABLA);
             $sql->execute();
             $ClienteSQL = $sql->fetchAll();
             if ($Cliente) {

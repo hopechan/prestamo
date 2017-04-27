@@ -84,42 +84,26 @@
             <thead>
                 <tr>Clientes</tr>
                 <tr id="titulo">
+                    <th>N de Prestamos</th>
                     <th>DUI</th>
-                    <th>NIT</th>
-                    <th>Nombres</th>
-                    <th>Apellidos</th>
-                    <th>Sexo</th>
-                    <th>Fecha de<br>nacimiento</th>
-                    <th>Direccion</th>
-                    <th>Telefonos</th>
+                    <th>Cliente</th>
+                    <th>Monto</th>
+                    <th>Saldo</th>
+                    <th>Cuotas</th>
                     <th></th>
                 </tr>
             </thead>
         <tbody>
       <tr>
-        <td>1111111</td>
+        <td>1</td>
         <td>111111111</td>
-        <td>Esperanza Elizabeth</td>
-        <td>Dueñas Acosta</td>
-        <td>F</td>
-        <td>08/10/1994</td>
-        <td>Col.San Jose calle el foco</td>
-        <td>79798761</td>
-        <td><button type="button" class="btn btn-primary" id="info"><span class="glyphicon glyphicon-info-sign"></span></button> <button type="button" class="btn btn-primary" id="borrar"><span class="glyphicon glyphicon-remove-sign"></span></button></td>
-      </tr>
-      <tr>
-        <td>1111111</td>
-        <td>111111111</td>
-        <td>Esperanza Elizabeth</td>
-        <td>Dueñas Acosta</td>
-        <td>F</td>
-        <td>08/10/1994</td>
-        <td>Col.San Jose calle el foco</td>
-        <td>79798761</td>
+        <td>Esperanza Dueñas</td>
+        <td>$100</td>
+        <td>$500</td>
+        <td>5/12</td>
         <td><button type="button" class="btn btn-primary" id="info"><span class="glyphicon glyphicon-info-sign"></span></button> <button type="button" class="btn btn-primary" id="borrar"><span class="glyphicon glyphicon-remove-sign"></span></button></td>
       </tr>
     </tbody>
   </table>
-  </div>
     </body>
 </html>
