@@ -1,5 +1,5 @@
 <?php
-
+require 'Conexion.php';
 class ControladorPrestamo {
     const TABLA = 'prestamo';
     var $max = [];
@@ -34,8 +34,9 @@ class ControladorPrestamo {
     public function obtener(){
         try {
             $con = new Conexion();
-            $sql = $con->prepare('SELECT * FROM'.self::TABLA.';');
-            $sql->execute();
+            $sql = $con->prepare('SELECT id_prestamo, dui, monto, valor_cuota, tasa_interes, cantidad_cuotas,'
+                    . 'fecha_inicio, fecha_fin, fecha_ultimo_pago, saldo, estado, observaciones  FROM'.self::TABLA.';');
+            $con->exec($sql);
             $Prestamo = $sql->fetchAll();
             if ($Prestamo) {
                 return $Prestamo;

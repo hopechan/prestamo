@@ -45,13 +45,7 @@
                         <div class="form-group">
                         <label for="listaClientes">Clientes</label>
                         <select class="form-control" id="listaClientes">
-                            <?php
-                            include 'ControladorCliente.php';
-                            $Cliente = new ControladorCliente();
-                            $Rset = $Cliente->obtener();
-                            foreach ($rows as $row) {
-                            echo '<option value="'.$row['nombres'].'">'.$row['apellidos'].'</option>';
-                            }?>
+                            
                         </select>
                         </div>
                         <div class="form-group">

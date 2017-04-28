@@ -3,9 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/esperanza/NetBeansProjects/sisPrestamo/assets/style.css</file>
             <file>file:/home/esperanza/NetBeansProjects/sisPrestamo/index.php</file>
+            <file>file:/home/esperanza/NetBeansProjects/sisPrestamo/ControladorCliente.php</file>
             <file>file:/home/esperanza/NetBeansProjects/sisPrestamo/webpago.php</file>
+            <file>file:/home/esperanza/NetBeansProjects/sisPrestamo/webprestamo.php</file>
             <file>file:/home/esperanza/NetBeansProjects/sisPrestamo/detallePrestamo.php</file>
         </group>
     </open-files>

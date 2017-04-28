@@ -22,6 +22,7 @@
             <a href="webcliente.php" class="w3-bar-item w3-button"><span class="glyphicon glyphicon-user"></span> Clientes</a>
             <a href="webpago.php" class="w3-bar-item w3-button"><span class="glyphicon glyphicon-usd"></span> Pago</a>
             <a href="webprestamo.php" class="w3-bar-item w3-button"><span class="glyphicon glyphicon-list-alt"></span> Prestamo</a>
+            <a href="prueba.php" class="w3-bar-item w3-button"><span class="glyphicon glyphicon-list-alt"></span> Pruebas :v</a>
         </div>
         <div class="container">
             <div class="panel panel-default">
@@ -33,7 +34,7 @@
         </div>
         <div class="modal fade" id="modelo" role="document">
             <div class="modal-dialog">
-                <!-- Modal content-->
+                 Modal content
                 <div class="modal-content">
                     <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -86,21 +87,40 @@
                 <tr id="titulo">
                     <th>N de Prestamos</th>
                     <th>DUI</th>
-                    <th>Cliente</th>
                     <th>Monto</th>
+                    <th>Valor</th>
+                    <th>tasa</th>
+                    <th>cuotas</th>
+                    <th>Fecha Inicio</th>
+                    <th>Fecha Fin</th>
+                    <th>Fecha Ultimo</th>
                     <th>Saldo</th>
-                    <th>Cuotas</th>
-                    <th></th>
+                    <th>Estado</th>
+                    <th>Observaciones</th>
+                    <th>Opciones</th>
                 </tr>
             </thead>
         <tbody>
       <tr>
-        <td>1</td>
-        <td>111111111</td>
-        <td>Esperanza Dueñas</td>
-        <td>$100</td>
-        <td>$500</td>
-        <td>5/12</td>
+        <?php
+        include 'ControladorPrestamo.php';
+        $objPrestamos = new ControladorPrestamo();
+        $p = $objPrestamos->obtener();
+        while ($row = mysql_fetch_row($p)){     
+        echo "<td>$row[1]></td>";  
+        echo "<td>$row[2]</td>";  
+        echo "<td>$row[3]</td>";  
+        echo "<td>$row[4]</td>";
+        echo "<td>$row[5]</td>";
+        echo "<td>$row[6]</td>";  
+        echo "<td>$row[7]</td>";  
+        echo "<td>$row[8]</td>";  
+        echo "<td>$row[9]</td>";  
+        echo "<td>$row[10]</td>";  
+        echo "<td>$row[11]</td>";  
+        echo "<td>$row[12]</td>";    
+        }  
+        ?>
         <td><button type="button" class="btn btn-primary" id="info"><span class="glyphicon glyphicon-info-sign"></span></button> <button type="button" class="btn btn-primary" id="borrar"><span class="glyphicon glyphicon-remove-sign"></span></button></td>
       </tr>
     </tbody>

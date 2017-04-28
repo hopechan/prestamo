@@ -32,21 +32,21 @@ class ControladorCliente {
             $sql = $con->prepare('SELECT dui, nit, nombres, apellidos,sexo,direccion,telefonos,fecha_nacimiento,observaciones from cliente;'.self::TABLA);
             $sql->execute();
             $ClienteSQL = $sql->fetchAll();
-            if ($Cliente) {
-                $Cliente_length = count($Cliente);
+            if ($ClienteSQL) {
+                $ClienteSQL_length = count($ClienteSQL);
                 for($i=0; $i < $Cliente_length; $i++) {
                     $cliente = new Cliente();
-                    $cliente->setDui($Cliente[$i]['dui']);
-                    $cliente->setNit($Cliente[$i]['nit']);
-                    $cliente->setNombres($Cliente[$i]['nombres']);
-                    $cliente->setApellidos($Cliente[$i]['apellidos']);
-                    $cliente->setSexo($Cliente[$i]['sexo']);
-                    $cliente->setDireccion($Cliente[$i]['direccion']);
-                    $cliente->setTelefono($Cliente[$i]['telefono']);
-                    $cliente->setFecha_nacimiento($Cliente[$i]['fecha_nacimiento']);
-                    $cliente->setObservaciones($Cliente[$i]['observaciones']);   
-                    $Cliente[];
-                    array_push($Cliente, $cliente);
+                    $cliente->setDui($ClienteSQL[$i]['dui']);
+                    $cliente->setNit($ClienteSQL[$i]['nit']);
+                    $cliente->setNombres($ClienteSQL[$i]['nombres']);
+                    $cliente->setApellidos($ClienteSQL[$i]['apellidos']);
+                    $cliente->setSexo($ClienteSQL[$i]['sexo']);
+                    $cliente->setDireccion($ClienteSQL[$i]['direccion']);
+                    $cliente->setTelefono($ClienteSQL[$i]['telefono']);
+                    $cliente->setFecha_nacimiento($ClienteSQL[$i]['fecha_nacimiento']);
+                    $cliente->setObservaciones($ClienteSQL[$i]['observaciones']);   
+                    $ClienteSQL[];
+                    array_push($ClienteSQL, $cliente);
                 }
                 return $Cliente;
             }else{
