@@ -39,9 +39,7 @@ class Prestamo {
             throw new ErrorPrestamo();
         } catch (ErrorPrestamo $e) {
             echo $e->nuevo($titulo, $ubicacion, $mensaje);
-        }
-
-            
+        }            
     }
     
     function agregarCuota(Cuota $cu) {
@@ -53,15 +51,12 @@ class Prestamo {
         } catch (ErrorPrestamo $e) {
             echo $e->nuevo($titulo, $ubicacion, $mensaje);
         }
-
-        
     }
     
     function calcularInteresMensual() {
         //I = F - P
         //F = P(1 + i)^n
-        try {
-            
+        try {   
             $fin = date("Y-m-d H:i:s"); //fecha actual
             $fechaI = new DateTime($fecha_inicio);
             $fechaF = new DateTime($fin);
@@ -76,7 +71,6 @@ class Prestamo {
         } catch (ErrorPrestamo $e) {
             echo $e->nuevo($titulo, $ubicacion, $mensaje);
         }
-
     }
     
     function validar(){

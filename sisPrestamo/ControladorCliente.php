@@ -1,5 +1,6 @@
 <?php
 require_once 'Conexion.php';
+require 'Cliente.php';
 
 class ControladorCliente {
     const TABLA = 'cliente';
@@ -7,18 +8,18 @@ class ControladorCliente {
     public function agregar(Cliente $c){
        try {   
        $con = new Conexion();
-       $sql = $con->prepare('INSERT INTO '.self::TABLA . '(dui, nit, nombres, apellidos, sexo, direccion, telefono, fecha_nacimiento,)'
+       $stmn = $con->prepare('INSERT INTO '.self::TABLA . '(dui, nit, nombres, apellidos, sexo, direccion, telefono, fecha_nacimiento,)'
               . 'VALUES(:dui, :nit, :nombres, :apellidos, :sexo, :direccion, :telefono, :fecha_nacimiento, :observaciones);');
-       $sql->bindParam(':dui',$c->getDui());
-       $sql->bindParam(':nit', $c->getNit());
-       $sql->bindParam(':nombres', $c->getNombres());
-       $sql->bindParam(':apellidos', $c->getApellidos());
-       $sql->bindParam(':sexo', $c->getSexo());
-       $sql->bindParam(':direccion', $c->getDireccion());
-       $sql->bindParam(':telefono', $c->getTelefono());
-       $sql->bindParam(':fecha_nacimiento', $c->getFecha_nacimiento());
-       $sql->bindParam(':observaciones', $c->getObservaciones());
-       $sql->execute();
+       $stmn->bindParam(':dui',$c->getDui());
+       $stmn->bindParam(':nit', $c->getNit());
+       $stmn->bindParam(':nombres', $c->getNombres());
+       $stmn->bindParam(':apellidos', $c->getApellidos());
+       $stmn->bindParam(':sexo', $c->getSexo());
+       $stmn->bindParam(':direccion', $c->getDireccion());
+       $stmn->bindParam(':telefono', $c->getTelefono());
+       $stmn->bindParam(':fecha_nacimiento', $c->getFecha_nacimiento());
+       $stmn->bindParam(':observaciones', $c->getObservaciones());
+       $stmn>execute();
        $con = null;
        throw new ErrorPrestamo($titulo, $ubicacion, $mensaje);
         } catch (ErrorPrestamo $e) {
@@ -29,26 +30,13 @@ class ControladorCliente {
     public function obtener(){
         try {          
             $con = new Conexion();
-            $sql = $con->prepare('SELECT dui, nit, nombres, apellidos,sexo,direccion,telefonos,fecha_nacimiento,observaciones from cliente;'.self::TABLA);
-            $sql->execute();
-            $ClienteSQL = $sql->fetchAll();
-            if ($ClienteSQL) {
-                $ClienteSQL_length = count($ClienteSQL);
-                for($i=0; $i < $Cliente_length; $i++) {
-                    $cliente = new Cliente();
-                    $cliente->setDui($ClienteSQL[$i]['dui']);
-                    $cliente->setNit($ClienteSQL[$i]['nit']);
-                    $cliente->setNombres($ClienteSQL[$i]['nombres']);
-                    $cliente->setApellidos($ClienteSQL[$i]['apellidos']);
-                    $cliente->setSexo($ClienteSQL[$i]['sexo']);
-                    $cliente->setDireccion($ClienteSQL[$i]['direccion']);
-                    $cliente->setTelefono($ClienteSQL[$i]['telefono']);
-                    $cliente->setFecha_nacimiento($ClienteSQL[$i]['fecha_nacimiento']);
-                    $cliente->setObservaciones($ClienteSQL[$i]['observaciones']);   
-                    $ClienteSQL[];
-                    array_push($ClienteSQL, $cliente);
-                }
-                return $Cliente;
+            $stmn = $con->prepare('SELECT dui, nit, nombres, apellidos,sexo,direccion,telefonos,fecha_nacimiento,observaciones from cliente;');
+            $stmn->execute();
+            $ClienteJson = array();
+            $ClienteJson = $stmn->fetchAll(PDO::FETCH_ASSOC);
+            if ($ClienteJson) {
+                    $cliente = json_encode($ClienteJson); 
+                return $cliente;
             }else{
                 return false;
             }
@@ -56,18 +44,10 @@ class ControladorCliente {
         } catch (ErrorPrestamo $e) {
             echo $e->nuevo();
         }
-        //Para mostrar la lista
-        //<html><head></head>
-        //<body>
-        //<ul>
-        //<?php foreach($cliente as $item):
-        //<li><?php echo $item['dui].'-'......'-'[fecha_nacimiento]</li>
-        //<?php endforeach;
-        //</ul>
-        //</body></html>
     }
        
     public function buscar($s){
+        $c = new Cliente();
         try {
             $scopy = $s;
             $length = strlen($scopy);
@@ -76,12 +56,11 @@ class ControladorCliente {
             }
             if ($scopy[0] == 'd') {
                 $con = new Conexion();
-                $sql = $con->prepare('SELECT dui, nit, nombres, apellidos, sexo, direccion, telefono, fecha_nacimiento FROM'.self::TABLA
+                $stmn = $con->prepare('SELECT dui, nit, nombres, apellidos, sexo, direccion, telefono, fecha_nacimiento FROM'.self::TABLA
                     .'WHERE dui = :dui;');
-                $c = new Cliente();
-                $sql->bindParam(':dui', $s);
-                $sql->execute();
-                $Cliente = $sql->fetch();
+                $stmn->bindParam(':dui', $s);
+                $stmn->execute();
+                $Cliente = $stmn->fetch();
                 if ($Cliente) {
                 $Cliente_length = count($Cliente);
                 for($i=0; $i < $Cliente_length; $i++) {
@@ -95,7 +74,7 @@ class ControladorCliente {
                     $cliente->setTelefono($Cliente[$i]['telefono']);
                     $cliente->setFecha_nacimiento($Cliente[$i]['fecha_nacimiento']);
                     $cliente->setObservaciones($Cliente[$i]['observaciones']);
-                    $Cliente[];
+                    //$Cliente[];
                     array_push($Cliente, $cliente);
                 }
                 return $Cliente;
@@ -106,12 +85,11 @@ class ControladorCliente {
        
             if ($scopy[0] == 'n') {
                 $con = new Conexion();
-                $sql = $con->prepare('SELECT dui, nit, nombres, apellidos, sexo, direccion, telefono, fecha_nacimiento FROM'.self::TABLA
+                $stmn = $con->prepare('SELECT dui, nit, nombres, apellidos, sexo, direccion, telefono, fecha_nacimiento FROM'.self::TABLA
                     .'WHERE nit = :nit;');
-                $c = new Cliente();
-                $sql->bindParam(':nit', $s);
-                $sql->execute();
-                $Cliente = $sql->fetch();
+                $stmn->bindParam(':nit', $s);
+                $stmn->execute();
+                $ClienteJson = $stmn->fetch();
                 if ($Cliente) {
                 $Cliente_length = count($Cliente);
                 for($i=0; $i < $Cliente_length; $i++) {
@@ -126,7 +104,7 @@ class ControladorCliente {
                     $cliente->setFecha_nacimiento($Cliente[$i]['fecha_nacimiento']);
                     $cliente->setObservaciones($Cliente[$i]['observaciones']);
                     
-                    $Cliente[];
+                    //$Cliente[];
                     array_push($Cliente, $cliente);
                 }
                 return $Cliente;
@@ -137,12 +115,11 @@ class ControladorCliente {
        
             if ($scopy[0] == 'm') {
                 $con = new Conexion();
-                $sql = $con->prepare('SELECT dui, nit, nombres, apellidos, sexo, direccion, telefono, fecha_nacimiento FROM'.self::TABLA
+                $stmn = $con->prepare('SELECT dui, nit, nombres, apellidos, sexo, direccion, telefono, fecha_nacimiento FROM'.self::TABLA
                     .'WHERE nombres = :nombres;');
-                $c = new Cliente();
-                $sql->bindParam(':nombres', $s);
-                $sql->execute();
-                $Cliente = $sql->fetch();
+                $stmn->bindParam(':nombres', $s);
+                $stmn->execute();
+                $Cliente = $stmn->fetch();
                 if ($Cliente) {
                 $Cliente_length = count($Cliente);
                 for($i=0; $i < $Cliente_length; $i++) {
@@ -156,7 +133,7 @@ class ControladorCliente {
                     $cliente->setTelefono($Cliente[$i]['telefono']);
                     $cliente->setFecha_nacimiento($Cliente[$i]['fecha_nacimiento']);
                     $cliente->setObservaciones($Cliente[$i]['observaciones']);
-                    $Cliente[];
+                    //$Cliente[];
                     array_push($Cliente, $cliente);
                 }
                 return $Cliente;
@@ -167,12 +144,11 @@ class ControladorCliente {
        
             if ($scopy[0] == 'a') {
                 $con = new Conexion();
-                $sql = $con->prepare('SELECT dui, nit, nombres, apellidos, sexo, direccion, telefono, fecha_nacimiento FROM'.self::TABLA
+                $stmn = $con->prepare('SELECT dui, nit, nombres, apellidos, sexo, direccion, telefono, fecha_nacimiento FROM'.self::TABLA
                     .'WHERE apellidos = :apellidos;');
-                $c = new Cliente();
-                $sql->bindParam(':apellidos', $s);
-                $sql->execute();
-                $Cliente = $sql->fetch();
+                $stmn->bindParam(':apellidos', $s);
+                $stmn->execute();
+                $Cliente = $stmn->fetch();
                 if ($Cliente) {
                 $Cliente_length = count($Cliente);
                 for($i=0; $i < $Cliente_length; $i++) {
@@ -186,7 +162,7 @@ class ControladorCliente {
                     $cliente->setTelefono($Cliente[$i]['telefono']);
                     $cliente->setFecha_nacimiento($Cliente[$i]['fecha_nacimiento']);
                     $cliente->setObservaciones($Cliente[$i]['observaciones']);
-                    $Cliente[];
+                    //$Cliente[];
                     array_push($Cliente, $cliente);
                 }
                 return $Cliente;
@@ -194,8 +170,7 @@ class ControladorCliente {
                 return false;
                 }      
             }
-            throw new ErrorPrestamo($titulo,$ubicacion,$mensaje);
-            
+            throw new ErrorPrestamo($titulo,$ubicacion,$mensaje);        
         } catch (ErrorPrestamo $e) {
             echo $e->nuevo();
         }
@@ -204,9 +179,9 @@ class ControladorCliente {
     public function eliminar(Cliente $c){
         try {
             $con = new Conexion();
-            $sql = $con->prepare('DELETE FROM'.self::TABLA. 'WHERE dui=:dui;');
-            $sql->bindParam(':dui', $s());
-            $sql->execute();   
+            $stmn = $con->prepare('DELETE FROM'.self::TABLA. 'WHERE dui=:dui;');
+            $stmn->bindParam(':dui', $s());
+            $stmn->execute();   
             throw new ErrorPrestamo($titulo,$ubicacion,$mensaje);
         } catch (ErrorPrestamo $e) {
             echo $e->nuevo();

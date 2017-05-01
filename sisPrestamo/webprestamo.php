@@ -45,7 +45,6 @@
                         <div class="form-group">
                         <label for="listaClientes">Clientes</label>
                         <select class="form-control" id="listaClientes">
-                            
                         </select>
                         </div>
                         <div class="form-group">

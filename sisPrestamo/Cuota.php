@@ -38,11 +38,7 @@ class Cuota {
             throw new ErrorPrestamo();
         } catch (ErrorPrestamo $e) {
            echo $e->nuevo($titulo, $ubicacion, $mensaje);
-       }
-
-
-
-       
+       }     
    }
    
    function getNum_cuota() {
