@@ -1,17 +1,21 @@
 <!DOCTYPE html>
 <html>
+    <?php
+    require 'ControladorPrestamo.php';
+    $controlP = new ControladorPrestamo();
+    $obxcliente = $controlP->obtenerPorCliente();
+    ?>
     <head>
         <meta charset="UTF-8">
         <title>Sistema Prestamo</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <link rel="stylesheet" href="assets/style.css">
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="bootstrap-table.css">
     </head>
-    <body id="body">
+    <body id="body" onload="llenarPrestamos('#prestamosActivos')">
         <nav class="navbar navbar-default">
-            <div class="container-fluid">
+            <div class="container-fluid"> 
                 <div class="navbar-header">
                     <a class="navbar-brand" href="#">Sistema Prestamo</a>
                 </div>
@@ -79,26 +83,11 @@
                 </div>
             </div>
         </div>
-        <table class="table table-bordered table-condensed" id="listarPrestamos">
-            <thead>
-                <tr>Clientes</tr>
-                <tr id="titulo">
-                    <th>N de Prestamos</th>
-                    <th>DUI</th>
-                    <th>Nombre</th>
-                    <th>Apellidos</th>
-                    <th>Monto</th>
-                    <th>Saldo</th>
-                    <th>Cuotas</th>
-                    <th>Opciones</th>
-                </tr>
-            </thead>
-            <tbody>
-            <script type="text/javascript">
-                
-            </script>    
-        <!--<td><button type="button" class="btn btn-primary" id="info"><span class="glyphicon glyphicon-info-sign"></span></button> <button type="button" class="btn btn-primary" id="borrar"><span class="glyphicon glyphicon-remove-sign"></span></button></td>-->
-            </tbody>
-        </table>
+        <table id="table"></table>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/bootstrap-table.min.js"></script>
+        <script src="bootstrap-table-zh-CN.js"></script>
+        <script src="funciones.js"></script>
     </body>
 </html>
