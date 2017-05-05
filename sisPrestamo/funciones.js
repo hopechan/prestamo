@@ -9,9 +9,6 @@ $('#table').bootstrapTable({
                 }, {
                     field: 'nombres',
                     title: 'Nombres'
-                }, {
-                    field: 'apellidos',
-                    title: 'Apellidos'
                 },{    
                     field: 'monto',
                     title: 'Monto'

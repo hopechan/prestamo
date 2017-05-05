@@ -2,8 +2,8 @@
 <html>
     <?php
     require 'ControladorPrestamo.php';
-    $controlP = new ControladorPrestamo();
-    $obxcliente = $controlP->obtenerPorCliente();
+    $prueba = new ControladorPrestamo();
+    $pruebaJson = $prueba->obtenerPorCliente();
     ?>
     <head>
         <meta charset="UTF-8">
@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <link rel="stylesheet" href="bootstrap-table.css">
     </head>
-    <body id="body" onload="llenarPrestamos('#prestamosActivos')">
+    <body id="body">
         <nav class="navbar navbar-default">
             <div class="container-fluid"> 
                 <div class="navbar-header">

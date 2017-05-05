@@ -84,23 +84,24 @@ class ControladorPrestamo {
     }
     
     public function obtenerPorCliente(){
-        try {    
+        try {
             $con = new Conexion();
-            $stmn=$con->prepare('SELECT prestamo.id_prestamo, prestamo.dui, cliente.nombres, cliente.apellidos, prestamo.monto, prestamo.saldo, prestamo.cantidad_cuotas FROM prestamo INNER JOIN cliente ON prestamo.dui=cliente.dui ');//Aqui va la sentencia 
+            $stmn = $con->prepare('SELECT prestamo.id_prestamo,cliente.dui,cliente.nombres,prestamo.monto,prestamo.saldo,prestamo.cantidad_cuotas FROM prestamo INNER JOIN cliente ON prestamo.dui=cliente.dui;');
             $stmn->execute();
             $prestamoJson= $stmn->fetchAll(PDO::FETCH_ASSOC); 
             if ($prestamoJson) {
-                $prestamos = json_encode($prestamoJson, JSON_UNESCAPED_UNICODE);
-                //crea un archivo json
-                $file = 'obtenerPorCliente.json';
-                file_put_contents($file, $prestamos);
-                return $prestamos;
+                $todos = json_encode($prestamoJson, JSON_UNESCAPED_UNICODE);
+                $file='obtenerPorCliente.json';
+                file_put_contents($file, $todos);
+                return $todos;
             }else{
                 return false;
             }
+            $con = null;
             throw new ErrorPrestamo($titulo,$ubicacion,$mensaje);
         } catch (ErrorPrestamo $e) {
             echo $e->nuevo();
-        }
+        }     
     }
+     //$stmn=$con->prepare('SELECT prestamo.id_prestamo, prestamo.dui, cliente.nombres, cliente.apellidos, prestamo.monto, prestamo.saldo, prestamo.cantidad_cuotas FROM prestamo INNER JOIN cliente ON prestamo.dui=cliente.dui;');//Aqui va la sentencia 
 }
