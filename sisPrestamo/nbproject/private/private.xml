@@ -4,9 +4,10 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/home/esperanza/NetBeansProjects/sisPrestamo/index.php</file>
-            <file>file:/home/esperanza/NetBeansProjects/sisPrestamo/funciones.js</file>
             <file>file:/home/esperanza/NetBeansProjects/sisPrestamo/ControladorCliente.php</file>
-            <file>file:/home/esperanza/NetBeansProjects/sisPrestamo/detallePrestamo.php</file>
+            <file>file:/home/esperanza/NetBeansProjects/sisPrestamo/Cliente.php</file>
+            <file>file:/home/esperanza/NetBeansProjects/sisPrestamo/webprestamo.php</file>
+            <file>file:/home/esperanza/NetBeansProjects/sisPrestamo/ControladorPrestamo.php</file>
         </group>
     </open-files>
 </project-private>

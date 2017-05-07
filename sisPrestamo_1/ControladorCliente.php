@@ -41,25 +41,16 @@ class ControladorCliente {
     public function obtener(){
         try {          
             $con = new Conexion();
-            $stmn = $con->prepare('SELECT * from cliente;');
+            $stmn = $con->prepare('SELECT dui, nit, nombres, apellidos,sexo,direccion,telefonos,fecha_nacimiento,observaciones from cliente;');
             $stmn->execute();
-            $clientes = $stmn->fetch(PDO::FETCH_ASSOC);
-            while ($clientes=$stmn->fetch(PDO::FETCH_ASSOC)) {
-                echo '<tr>';
-                echo '<td>'.$clientes['dui'].'</td>';
-                echo '<td>'.$clientes['nit'].'</td>';
-                echo '<td>'.$clientes['nombres'].'</td>';
-                echo '<td>'.$clientes['apellidos'].'</td>';
-                echo '<td>'.$clientes['sexo'].'</td>';
-                echo '<td>'.$clientes['direccion'].'</td>';
-                echo '<td>'.$clientes['telefonos'].'</td>';
-                echo '<td>'.$clientes['fecha_nacimiento'].'</td>';
-                echo '<td>'.$clientes['observaciones'].'</td>';
-                echo '<td>'.'<button data-toggle="modal" data-target="#view-modal" data-id="'.$clientes['dui'].'"id="getUser" class="btn btn-sm btn-info"><i class="glyphicon glyphicon-eye-open"></i></button>'
-                .'<button data-toggle="modal" data-target="#view-modal" data-id="'.$clientes['dui'].'"id="getUser" class="btn btn-sm btn-info"><i class="glyphicon glyphicon-remove"></i></button></tr>';
-                echo '</tr>';
+            $ClienteJson = array();
+            $ClienteJson = $stmn->fetchAll(PDO::FETCH_ASSOC);
+            if ($ClienteJson) {
+                    $cliente = json_encode($ClienteJson); 
+                return $cliente;
+            }else{
+                return false;
             }
-            $con = null;        
             throw new ErrorPrestamo($titulo, $ubicacion, $mensaje);
         } catch (ErrorPrestamo $e) {
             echo $e->nuevo();
@@ -207,20 +198,4 @@ class ControladorCliente {
             echo $e->nuevo();
         }
     } 
-    
-    public function obtenerNombres() {
-        try {          
-            $con = new Conexion();
-            $stmn = $con->prepare('SELECT * from cliente;');
-            $stmn->execute();
-            $clientes = $stmn->fetch(PDO::FETCH_ASSOC);
-            while ($clientes=$stmn->fetch(PDO::FETCH_ASSOC)) {
-                echo '<option>'.$clientes['nombres'].$clientes['apellidos'].'</option>';      
-            }
-            $con = null;        
-            throw new ErrorPrestamo($titulo, $ubicacion, $mensaje);
-        } catch (ErrorPrestamo $e) {
-            echo $e->nuevo();
-        }     
-    }
 }

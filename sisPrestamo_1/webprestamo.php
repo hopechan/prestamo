@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html>
     <head>
         <meta charset="UTF-8">
@@ -10,13 +11,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script src="funciones.js"></script>
     </head>
-    <body id="body">
-        <?php
-        require_once 'ControladorPrestamo.php';
-        //require_once 'ControladorCliente.php';
-        $p = new ControladorPrestamo();
-        //$c = new ControladorCliente();
-        ?>
+    <body id=body>
         <nav class="navbar navbar-default">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -32,7 +27,7 @@
         </div> 
         <div class="container">
             <div class="panel panel-default">
-                <h4 id="tituloCliente">Bienvenido</h4>
+                <h4 id="tituloCliente">Prestamos</h4>
                 <div class="panel-body"><input type="text" class="form-control" id="busqueda" placeholder="Buscar por nombre"></div>
                 <div><button type="button" class="btn btn-default" data-toggle="modal" data-target="#modelo"><span class="glyphicon glyphicon-edit"></span> Nuevo Prestamo</button></div>
             </div>
@@ -50,7 +45,6 @@
                         <div class="form-group">
                         <label for="listaClientes">Clientes</label>
                         <select class="form-control" id="listaClientes">
-                            <option>Esperanza Dueñas</option>
                         </select>
                         </div>
                         <div class="form-group">
@@ -85,22 +79,6 @@
                 </div>  
                 </div>
             </div>   
-        </div>
-        <table class="table table-bordered">             
-            <thead>
-                <tr>
-                <th>ID</th>
-                <th>DUI</th>
-                <th>Nombres</th>
-                <th>Monto</th>
-                <th>Saldo</th>
-                <th>Cuotas</th>
-                <th>Opciones</th>
-                </tr>
-            </thead>            
-            <tbody>
-                <?php $prestamos = $p->obtenerActivos();?>
-            </tbody>
-        </table>    
+        </div>    
     </body>
 </html>

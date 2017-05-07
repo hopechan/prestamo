@@ -81,24 +81,21 @@
         <table class="table table-bordered">             
             <thead>
                 <tr>
+                <th>ID</th>
                 <th>DUI</th>
-                <th>NT</th>
                 <th>Nombres</th>
-                <th>Apellidos</th>
-                <th>Sexo</th>
-                <th>Direccion</th>
-                <th>Telefonos</th>
-                <th>Fecha de nacimiento</th>
-                <th>Observaciones</th>
+                <th>Monto</th>
+                <th>Saldo</th>
+                <th>Cuotas</th>
                 <th>Opciones</th>
                 </tr>
             </thead>            
             <tbody>
-                <?php
-                require_once 'ControladorCliente.php';
-                $c = new ControladorCliente();
-                $clientes = $c->obtener();
-                ?>
+<!--                
+                require_once 'ControladorPrestamo.php';
+                $p = new ControladorPrestamo();
+                $prestamos = $p->obtenerActivos();
+                -->
             </tbody>
         </table>    
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>

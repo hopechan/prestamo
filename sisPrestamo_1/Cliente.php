@@ -1,4 +1,6 @@
 <?php
+
+
 class Cliente {
   public $dui;
   public $nit;

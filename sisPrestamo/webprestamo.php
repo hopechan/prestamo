@@ -45,6 +45,7 @@
                         <div class="form-group">
                         <label for="listaClientes">Clientes</label>
                         <select class="form-control" id="listaClientes">
+                            <option>Elija el cliente</option>
                         </select>
                         </div>
                         <div class="form-group">
@@ -79,6 +80,26 @@
                 </div>  
                 </div>
             </div>   
-        </div>    
+        </div>
+        <table class="table table-bordered">             
+            <thead>
+                <tr>
+                <th>ID</th>
+                <th>DUI</th>
+                <th>Nombres</th>
+                <th>Monto</th>
+                <th>Saldo</th>
+                <th>Cuotas</th>
+                <th>Opciones</th>
+                </tr>
+            </thead>            
+            <tbody>
+                <?php
+                require_once 'ControladorPrestamo.php';
+                $p = new ControladorPrestamo();
+                $prestamos = $p->obtenerActivos();
+                ?>
+            </tbody>
+        </table> 
     </body>
 </html>

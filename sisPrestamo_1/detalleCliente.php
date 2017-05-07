@@ -13,7 +13,7 @@
         <nav class="navbar navbar-default">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#">Sistema Prestamo</a>
+                    <a class="navbar-brand" href="#">Detalle Cliente</a>
                 </div>
             </div>
         </nav>
@@ -22,19 +22,6 @@
             <a href="webcliente.php" class="w3-bar-item w3-button"><span class="glyphicon glyphicon-user"></span> Clientes</a>
             <a href="webpago.php" class="w3-bar-item w3-button"><span class="glyphicon glyphicon-usd"></span> Pago</a>
             <a href="webprestamo.php" class="w3-bar-item w3-button"><span class="glyphicon glyphicon-list-alt"></span> Prestamo</a>
-        </div>
-        <div class="container">
-            <div class="panel panel-default">
-                <h4 id="tituloCliente">Pagos</h4>
-                <div class="panel panel-default" id="detalle">                   
-                </div>
-            </div>
-        </div>
-        <div>
-            <form>
-                <div class="form-group">                           
-                </div>
-            </form>
-        </div>
-    </body>
+        </div> 
+    </body>   
 </html>
