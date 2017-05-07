@@ -7,6 +7,17 @@ class ControladorCliente {
 
     public function agregar(Cliente $c){
        try {   
+           if ($_POST) {
+               $c->setDui($_POST['dui']);
+               $c->setNit($_POST['nit']);
+               $c->setNombres($_POST['nombres']);
+               $c->setApellidos($_POST['apellidos']);
+               $c->setSexo($_POST['sexo']);
+               $c->setDireccion($_POST['direccion']);
+               $c->setTelefono($_POST['telefono']);
+               $c->setFecha_nacimiento($_POST['fecha_nacimiento']);
+               $c->setObservaciones($_POST['observaciones']);
+           }
        $con = new Conexion();
        $stmn = $con->prepare('INSERT INTO '.self::TABLA . '(dui, nit, nombres, apellidos, sexo, direccion, telefono, fecha_nacimiento,)'
               . 'VALUES(:dui, :nit, :nombres, :apellidos, :sexo, :direccion, :telefono, :fecha_nacimiento, :observaciones);');

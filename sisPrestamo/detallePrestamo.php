@@ -26,7 +26,8 @@
         <div class="container">
             <div class="panel panel-default">
                 <h4 id="tituloCliente">Prestamos</h4>
-                <div class="panel panel-default" id="detalle">                   
+                <div class="panel panel-default" id="detalle">
+                    Datos del cliente
                 </div>
             </div>
         </div>

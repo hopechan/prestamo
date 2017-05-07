@@ -1,22 +1,23 @@
-$('#table').bootstrapTable({
-                url: 'obtenerPorCliente.json',
-                columns: [{
-                    field: 'id_prestamo',
-                    title: 'N° Prestamo'
-                }, {
-                    field: 'dui',
-                    title: 'DUI'
-                }, {
-                    field: 'nombres',
-                    title: 'Nombres'
-                },{    
-                    field: 'monto',
-                    title: 'Monto'
-                },{
-                    field: 'saldo',
-                    title: 'Saldo'
-                },{
-                    field: 'cantidad_cuotas',
-                    title: 'Cuotas'
-                },]
+$('#registroPrestamo').submit(function(e){
+    e.preventDefault();
+    $.ajax({
+        url: 'ControladorPrestamo.php',
+        type: 'POST',
+        data: $(this).serialize(),
+            datatype: 'html'
+    })
+            .done(function(data){
+            $('#modelo').fadeOut('slow', function(){
+                $('#modelo').fadeIn('slow').html(data);
             });
+    })
+            .fail(function(){
+                alert('Ajax Fallo');
+    });
+});
+
+$(document).ready(function(){
+    $("#abrir").click(function(){
+        $("#modelo").modal();
+    });
+});

@@ -66,29 +66,37 @@ class ControladorPrestamo {
         }    
     }
     
-    public function obtenerIdPrestamo(){
-        try {
-            $con = new Conexion();
-            $stmn= $con->prepare( 'SELECT MAX(id_prestamo) FROM prestamo;');
-            $stmn->execute();
-            $last=$stmn->fetch(PDO::FETCH_ASSOC);
-            if ($last) {
-                $idJason = json_encode($last);
-            }
-            //return $max[$last];
-            return $idJason;
-            throw new ErrorPrestamo($titulo,$ubicacion,$mensaje);
-        } catch (ErrorPrestamo $e) {
-            echo $e->nuevo();
-        }   
-    }
-    
-    public function obtenerPorCliente(){
+    public function obtenerActivos(){
         try {
             $con = new Conexion();
             $stmn = $con->prepare('SELECT prestamo.id_prestamo,cliente.dui,cliente.nombres,prestamo.monto,prestamo.saldo,prestamo.cantidad_cuotas FROM prestamo INNER JOIN cliente ON prestamo.dui=cliente.dui;');
             $stmn->execute();
-            $prestamoJson= $stmn->fetchAll(PDO::FETCH_ASSOC); 
+            while ($prestamoArray=$stmn->fetch(PDO::FETCH_ASSOC)) {
+                echo '<tr>';
+                echo '<td>'.$prestamoArray['id_prestamo'].'</td>';
+                echo '<td>'.$prestamoArray['dui'].'</td>';
+                echo '<td>'.$prestamoArray['nombres'].'</td>';
+                echo '<td>'.$prestamoArray['monto'].'</td>';
+                echo '<td>'.$prestamoArray['saldo'].'</td>';
+                echo '<td>';$prestamoArray['cantidad_cuotas'].'</td>';
+                echo '<td>'.'<button data-toggle="modal" data-target="#view-modal" data-id="'.$prestamoArray['id_prestamo'].'"id="getUser" class="btn btn-sm btn-info"><i class="glyphicon glyphicon-eye-open"></i></button>'
+                .'<button data-toggle="modal" data-target="#view-modal" data-id="'.$prestamoArray['id_prestamo'].'"id="getUser" class="btn btn-sm btn-info"><i class="glyphicon glyphicon-remove"></i></button></tr>';
+                echo '</tr>';
+            }
+            $con = null;
+            throw new ErrorPrestamo($titulo,$ubicacion,$mensaje);
+        } catch (ErrorPrestamo $e) {
+            echo $e->nuevo();
+        } 
+    }
+    
+    public function obtenerPorCliente(){
+       //arreglar la consulta para que reciba de la interfaz el dui a buscar 
+        try {
+            $con = new Conexion();
+            $stmn = $con->prepare('SELECT * from prestamo where dui;');
+            $stmn->execute();
+            $prestamo= $stmn->fetchAll(PDO::FETCH_ASSOC); 
             if ($prestamoJson) {
                 $todos = json_encode($prestamoJson, JSON_UNESCAPED_UNICODE);
                 $file='obtenerPorCliente.json';

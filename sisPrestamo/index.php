@@ -1,17 +1,12 @@
 <!DOCTYPE html>
 <html>
-    <?php
-    require 'ControladorPrestamo.php';
-    $prueba = new ControladorPrestamo();
-    $pruebaJson = $prueba->obtenerPorCliente();
-    ?>
     <head>
         <meta charset="UTF-8">
         <title>Sistema Prestamo</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <link rel="stylesheet" href="assets/style.css">
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-        <link rel="stylesheet" href="bootstrap-table.css">
+        <!--<link rel="stylesheet" href="bootstrap-table.css">-->
     </head>
     <body id="body">
         <nav class="navbar navbar-default">
@@ -33,7 +28,7 @@
                 <img src="assets/business-person-silhouette-wearing-tie.png" id="persona">
                 <h4 id="tituloCliente">Clientes</h4>
                 <div class="panel-body"><input type="text" class="form-control" id="busqueda" placeholder="Buscar por nombre"></div>
-                <div><button type="button" class="btn btn-default" data-toggle="modal" data-target="#modelo"><span class="glyphicon glyphicon-edit"></span> Nuevo Cliente</button></div>
+                <div><button type="button" class="btn btn-default" id="abrir"><span class="glyphicon glyphicon-edit"></span> Nuevo Cliente</button></div>
             </div>
         </div>
         <div class="modal fade" id="modelo" role="document">
@@ -44,35 +39,35 @@
                     <h4 class="modal-title">Nuevo Cliente</h4>
                     </div>
                 <div class="modal-body">
-                    <form>
+                    <form method="post" id="registroPrestamo">
                         <div class="form-group">                           
-                            <input type="text" class="form-control" id="DUI" placeholder="Ingrese DUI">
+                            <input type="text" class="form-control" id="DUI" name="DUI" placeholder="Ingrese DUI">
                         </div>
                         <div class="form-group">                            
-                            <input type="text" class="form-control" id="NIT" placeholder="Ingrese NIT">
+                            <input type="text" class="form-control" id="NIT" name="NIT" placeholder="Ingrese NIT">
                         </div>
                         <div class="form-group">                         
-                            <input type="text" class="form-control" id="nombre" placeholder="Ingrese nombres">
+                            <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingrese nombres">
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="apellidos" placeholder="Ingrese apellidos">
+                            <input type="text" class="form-control" id="apellidos" name="apellidos" placeholder="Ingrese apellidos">
                         </div>
                         <div class="form-group">
                             <label class="radio-inline"><input type="radio" name="optradio">Masculino</label>   
                             <label class="radio-inline"><input type="radio" name="optradio">Femenino</label>
                         </div>
                         <div class="form-group">                           
-                            <textarea class="form-control" rows="5" id="direccion" placeholder="Direccion"></textarea>
+                            <textarea class="form-control" rows="5" id="direccion" name="direccion" placeholder="Direccion"></textarea>
                         </div>
                         <div class="form-group">                       
-                            <input type="text" class="form-control" id="telefono" placeholder="Ingrese numero de telefono">
+                            <input type="text" class="form-control" id="telefono" name="telefono" placeholder="Ingrese numero de telefono">
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="fecha" placeholder="Ingrese fecha">
+                            <input type="text" class="form-control" id="fecha" name="fecha" placeholder="Ingrese fecha">
                             <button type="button" class="btn btn-primary" id="calendario"><span class="glyphicon glyphicon-calendar"></span></button>
                         </div>
                         <div class="form-group">   
-                            <textarea class="form-control" rows="5" id="observaciones" placeholder="Observaciones"></textarea>
+                            <textarea class="form-control" rows="5" id="observaciones" name="observaciones" placeholder="Observaciones"></textarea>
                         </div>                        
                     </form>              
                 </div>
@@ -83,11 +78,28 @@
                 </div>
             </div>
         </div>
-        <table id="table"></table>
+        <table class="table table-bordered">             
+            <thead>
+                <tr>
+                <th>ID</th>
+                <th>DUI</th>
+                <th>Nombres</th>
+                <th>Monto</th>
+                <th>Saldo</th>
+                <th>Cuotas</th>
+                <th>Opciones</th>
+                </tr>
+            </thead>            
+            <tbody>
+<!--                
+                require_once 'ControladorPrestamo.php';
+                $p = new ControladorPrestamo();
+                $prestamos = $p->obtenerActivos();
+                -->
+            </tbody>
+        </table>    
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/bootstrap-table.min.js"></script>
-        <script src="bootstrap-table-zh-CN.js"></script>
         <script src="funciones.js"></script>
     </body>
 </html>
