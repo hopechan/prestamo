@@ -1,6 +1,6 @@
 <?php
-include_once 'Cliente.php';
-include_once 'Cuota.php';
+require_once 'Cliente.php';
+require_once 'Cuota.php';
 //$cliente = new Cliente();
 
 class Prestamo {

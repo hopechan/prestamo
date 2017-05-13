@@ -1,5 +1,11 @@
-<!DOCTYPE html>
+<?php
+require_once 'ControladorPrestamo.php';
+require_once 'Prestamo.php';
+$p = new Prestamo();
+$cPrestamo = new ControladorPrestamo();
+?>
 
+<!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
@@ -9,7 +15,6 @@
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <script src="funciones.js"></script>
     </head>
     <body id=body>
         <nav class="navbar navbar-default">
@@ -31,56 +36,6 @@
                 <div class="panel-body"><input type="text" class="form-control" id="busqueda" placeholder="Buscar por nombre"></div>
                 <div><button type="button" class="btn btn-default" data-toggle="modal" data-target="#modelo"><span class="glyphicon glyphicon-edit"></span> Nuevo Prestamo</button></div>
             </div>
-        </div>
-        <div class="modal fade" id="modelo" role="document">
-            <div class="modal-dialog">
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Nuevo Prestamo</h4>
-                    </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="form-group">
-                        <label for="listaClientes">Clientes</label>
-                        <select class="form-control" id="listaClientes">
-                            <option>Elija el cliente</option>
-                        </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="monto">Monto</label>
-                            <input type="text" class="form-control" id="monto" placeholder="0.00">
-                        </div>
-                        <div class="form-group">
-                            <label for="cantidad">Numero de Cuotas</label>
-                            <input type="text" class="form-control" id="cantidad" placeholder="Numero cuotas">
-                        </div>
-                        <div class="form-group">
-                            <label for="fecha">Fecha de inicio</label>
-                            <input type="text" class="form-control" id="fecha" placeholder="Fecha de inicio">
-                        </div>
-                        <div class="form-group">
-                            <label for="valor">Valor cuotas</label>
-                            <input type="text" class="form-control" id="disabledTextInput" placeholder="0.00" disabled>
-                        </div>
-                        <div class="form-group">
-                            <label for="fechaFin">Fecha Finalizacion</label>
-                            <input type="text" class="form-control" id="disabledTextInput" placeholder="Fecha Fin" disabled>
-                        </div>
-                        <div class="form-group">
-                            <label for="capitalizacion">Capitalizacion</label>
-                            <input type="text" class="form-control" id="disabledTextInput" placeholder="Mensual" disabled>
-                        </div>
-                    </form>
-                </div> 
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" id="calcular"><span class="glyphicon glyphicon-plus"></span>Calcular Valores</button>
-                    <button type="button" class="btn btn-primary" id="guardar"><span class="glyphicon glyphicon-save"></span>Guardar</button>
-                </div>  
-                </div>
-            </div>   
-        </div>
         <table class="table table-bordered">             
             <thead>
                 <tr>
@@ -94,11 +49,7 @@
                 </tr>
             </thead>            
             <tbody>
-                <?php
-                require_once 'ControladorPrestamo.php';
-                $p = new ControladorPrestamo();
-                $prestamos = $p->obtenerActivos();
-                ?>
+                <?php $cPrestamo->obtenerActivos()?>
             </tbody>
         </table> 
     </body>

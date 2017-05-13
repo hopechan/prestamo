@@ -1,25 +1,12 @@
 <?php
 require_once 'Conexion.php';
-require 'Cliente.php';
+require_once 'Cliente.php';
 
 class ControladorCliente {
-    const TABLA = 'cliente';
-
     public function agregar(Cliente $c){
-       try {   
-           if ($_POST) {
-               $c->setDui($_POST['dui']);
-               $c->setNit($_POST['nit']);
-               $c->setNombres($_POST['nombres']);
-               $c->setApellidos($_POST['apellidos']);
-               $c->setSexo($_POST['sexo']);
-               $c->setDireccion($_POST['direccion']);
-               $c->setTelefono($_POST['telefono']);
-               $c->setFecha_nacimiento($_POST['fecha_nacimiento']);
-               $c->setObservaciones($_POST['observaciones']);
-           }
+       try {
        $con = new Conexion();
-       $stmn = $con->prepare('INSERT INTO '.self::TABLA . '(dui, nit, nombres, apellidos, sexo, direccion, telefono, fecha_nacimiento,)'
+       $stmn = $con->prepare('INSERT INTO  cliente (dui, nit, nombres, apellidos, sexo, direccion, telefono, fecha_nacimiento,)'
               . 'VALUES(:dui, :nit, :nombres, :apellidos, :sexo, :direccion, :telefono, :fecha_nacimiento, :observaciones);');
        $stmn->bindParam(':dui',$c->getDui());
        $stmn->bindParam(':nit', $c->getNit());
@@ -30,9 +17,10 @@ class ControladorCliente {
        $stmn->bindParam(':telefono', $c->getTelefono());
        $stmn->bindParam(':fecha_nacimiento', $c->getFecha_nacimiento());
        $stmn->bindParam(':observaciones', $c->getObservaciones());
-       $stmn>execute();
-       $con = null;
-       throw new ErrorPrestamo($titulo, $ubicacion, $mensaje);
+       $stmn->execute();
+       echo 'Dato Guardado';
+       //$con = null;
+       //throw new ErrorPrestamo($titulo, $ubicacion, $mensaje);
         } catch (ErrorPrestamo $e) {
             echo $e->nuevo();
         }        
@@ -224,3 +212,5 @@ class ControladorCliente {
         }     
     }
 }
+
+ 

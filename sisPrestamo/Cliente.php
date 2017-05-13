@@ -10,6 +10,7 @@ class Cliente {
   public $fecha_nacimiento;
   public $observaciones;
   
+
   //get
   function getDui() {
       return $this->dui;

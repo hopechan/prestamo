@@ -94,3 +94,17 @@
 .modal-content{
     background-color: #2E7E91;
 }
+
+#registro{
+    position: absolute;
+    width: 1150px;
+    height: 100px; 
+    top: 70px;
+    left:205px;        
+}
+
+#formCliente{
+    position: absolute;
+    top:53px;
+    left:205px;
+}

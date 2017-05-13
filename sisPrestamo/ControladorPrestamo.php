@@ -1,31 +1,31 @@
 <?php
 require 'Conexion.php';
 require 'Prestamo.php';
-//require 'ErrorPrestamo.php';
+
 class ControladorPrestamo {
     const TABLA = 'prestamo';
     var $max = [];
     var $Prestamo = [];
-   
     public function agregar(Prestamo $p){
         try {
             $con = new Conexion();
-            $stm = $con->prepare('INSERT INTO '.self::TABLA . '(id_prestamo, cliente, monto, valor_cuota, tasa_interes, cantidad_cuotas, fecha_inicio, fecha_fin, fecha_ultimo_pago, saldo, estado, observaciones, cuotas)'
-                . 'VALUES(:id_prestamo, :cliente, :monto, :valor_cuota, :tasa_interes, :cantidad_cuotas, :fecha_inicio, :fecha_fin, :fecha_ultimo_pago, :saldo, :estado, :observaciones, :cuotas);');
-            $stmn->bindParam(':id_prestamo',$p->getId_prestamo());
+            $stm = $con->prepare('INSERT INTO '.self::TABLA .'(cliente, monto, valor_cuota, cantidad_cuotas, fecha_inicio, fecha_fin)'
+                . 'VALUES(:cliente, :monto,:valor_cuota,:cantidad_cuotas,:fecha_inicio ,:fecha_fin);');
+            //$stmn->bindParam(':id_prestamo',$p->getId_prestamo());
             $stmn->bindParam(':cliente', $p->getCliente());
             $stmn->bindParam(':monto', $p->getMonto());
             $stmn->bindParam(':valor_cuota', $p->getValor_cuota());
-            $stmn->bindParam(':tasa_interes', $p->getTasa_interes());
+            //$stmn->bindParam(':tasa_interes', $p->getTasa_interes());
             $stmn->bindParam(':cantidad_cuotas', $p->getCantidad_cuotas());
             $stmn->bindParam(':fecha_inicio', $p->getFecha_inicio());
             $stmn->bindParam(':fecha_fin', $p->getFecha_fin());
-            $stmn->bindParam(':fecha_ultimo_pago', $p->getFecha_ultimo_pago());
-            $stmn->bindParam(':saldo',$p->getSaldo());
-            $stmn->bindParam(':estado',$p->getEstado());
-            $stmn->bindParam(':observaciones',$p->getObservaciones());
-            $stmn->bindParam(':cuotas',$p->getCuotas());
+            //$stmn->bindParam(':fecha_ultimo_pago', $p->getFecha_ultimo_pago());
+            //$stmn->bindParam(':saldo',$p->getSaldo());
+            //$stmn->bindParam(':estado',$p->getEstado());
+            //$stmn->bindParam(':observaciones',$p->getObservaciones());
+            //$stmn->bindParam(':cuotas',$p->getCuotas());
             $stmn->execute();
+            echo 'Dato guardado';
             $con = null;
             throw new ErrorPrestamo($titulo,$ubicacion,$mensaje);
         } catch (ErrorPrestamo $e) {
@@ -50,7 +50,7 @@ class ControladorPrestamo {
             echo $e->nuevo();
         }  
     }
-    //Necesita recibir un json :v
+
     public function modificar(Prestamo $p){
         try {
             $con = new Conexion();
@@ -97,14 +97,7 @@ class ControladorPrestamo {
             $stmn = $con->prepare('SELECT * from prestamo where dui;');
             $stmn->execute();
             $prestamo= $stmn->fetchAll(PDO::FETCH_ASSOC); 
-            if ($prestamoJson) {
-                $todos = json_encode($prestamoJson, JSON_UNESCAPED_UNICODE);
-                $file='obtenerPorCliente.json';
-                file_put_contents($file, $todos);
-                return $todos;
-            }else{
-                return false;
-            }
+            
             $con = null;
             throw new ErrorPrestamo($titulo,$ubicacion,$mensaje);
         } catch (ErrorPrestamo $e) {

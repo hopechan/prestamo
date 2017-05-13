@@ -13,8 +13,7 @@ class Conexion extends PDO{
             echo "Ha surgido un error y no se puede conectar a la base de datos.<br> Detalle: " . $e->getMessage();
             exit;
         }         
-    }
-    
+    }  
   }
   
   
