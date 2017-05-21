@@ -78,7 +78,7 @@ class ControladorPrestamo {
                 echo '<td>'.$prestamoArray['nombres'].'</td>';
                 echo '<td>'.$prestamoArray['monto'].'</td>';
                 echo '<td>'.$prestamoArray['saldo'].'</td>';
-                echo '<td>';$prestamoArray['cantidad_cuotas'].'</td>';
+                echo '<td>'.$prestamoArray['cantidad_cuotas'].'</td>';
                 echo '<td>'.'<button data-toggle="modal" data-target="#view-modal" data-id="'.$prestamoArray['id_prestamo'].'"id="getUser" class="btn btn-sm btn-info"><i class="glyphicon glyphicon-eye-open"></i></button>'
                 .'<button data-toggle="modal" data-target="#view-modal" data-id="'.$prestamoArray['id_prestamo'].'"id="getUser" class="btn btn-sm btn-info"><i class="glyphicon glyphicon-remove"></i></button></tr>';
                 echo '</tr>';

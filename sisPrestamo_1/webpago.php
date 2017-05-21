@@ -33,7 +33,6 @@
         <div>
             <form>
                 <div class="form-group">                           
-                    <input type="text" class="form-control" id="monto" placeholder="Ingrese Monto">
                 </div>
             </form>
         </div>
