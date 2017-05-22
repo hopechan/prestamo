@@ -62,7 +62,7 @@
 	                echo '<td>' . $Cliente[$i]->direccion . '</td>';
 	                echo '<td>' . $Cliente[$i]->telefono . '</td>';
 	                echo '<td>' . $Cliente[$i]->fecha_nacimiento . '</td>';
-	                echo '<td>'.'<a href=detalleCliente.php?dui='.$Cliente[$i]->dui.'&nit='.$Cliente[$i]->nit.'&nombres='.$Cliente[$i]->nombres.'&apellidos='.$Cliente[$i]->apellidos.'&sexo='.$Cliente[$i]->sexo.'&direccion='.$Cliente[$i]->direccion.'><button class="btn btn-sm btn-info"><i class="glyphicon glyphicon-eye-open"></i></button></a>';
+	                echo '<td>'.'<a href=detalleCliente.php?dui='.$Cliente[$i]->dui.'&nit='.$Cliente[$i]->nit.'&nombres='.$Cliente[$i]->nombres.'&apellidos='.$Cliente[$i]->apellidos.'&sexo='.$Cliente[$i]->sexo.'&direccion='.$Cliente[$i]->direccion.'$telefono='.$Cliente[$i]->telefono.'&fecha_nacimiento='.$Cliente[$i]->fecha_nacimiento.'><button class="btn btn-sm btn-info"><i class="glyphicon glyphicon-eye-open"></i></button></a>';
 	                echo '<a href=eliminar.php?dui='.$Cliente[$i]->dui.'><button class="btn btn-sm btn-info" ><i class="glyphicon glyphicon-remove"></i></button></a></tr>';
 	                echo '</tr>';
                 }
